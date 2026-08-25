@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSL2D4B6XE"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-KSL2D4B6XE');
+	</script>
+	<title>Data Analysis and Probability - Part 1: Graph, Frequency and Histograms, Data Distributions, Independent and Dependent Events - Aristo Rinjuang</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+	<meta name="description" content="Bar, Pie, and Line Graph. Frequency, Histograms, Distributions. Outlier. Quartiles, Probability, Sampling, Bias. Stem-and-Leaf, Box-and-Whisker, and Dot Plot.">
+	<meta property="og:title" content="Data Analysis and Probability - Part 1: Graph, Frequency ...">
+	<meta property="og:description" content="Bar, Pie, and Line Graph. Frequency, Histograms, Distributions. Outlier. Quartiles, Probability, Sampling, Bias. Stem-and-Leaf, Box-and-Whisker, and Dot Plot."><meta property="og:image" content="https://aristorinjuang.com/uploads/media/ea2e8782697f1b6e.webp">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Aristo Rinjuang">
+	<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://aristorinjuang.com/uploads/media/ea2e8782697f1b6e.webp">
+	<meta property="article:author" content="Aristo Rinjuang">
+	<meta name="author" content="Aristo Rinjuang">
+	<meta name="robots" content="index, follow">
+	<meta name="msapplication-config" content="/static/images/icons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="icon" type="image/png" href="/static/images/icons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/static/images/icons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="/static/images/icons/manifest.json">
+	<link rel="mask-icon" href="/static/images/icons/safari-pinned-tab.svg" color="#c0392b">
+	<link rel="canonical" href="/data-analysis-and-probability-part-1-graph-frequency-histograms-distributions-independent-dependent-events/">
+	<style>
+html{scroll-behavior:smooth}body{background:#222831;color:#eee;font-family:Helvetica,Arial,sans-serif;font-size:18px;line-height:1.714em;min-height:100vh;position:relative;scrollbar-color:#eee #222831;scrollbar-width:thin}body::-webkit-scrollbar{width:5px}body::-webkit-scrollbar-track{background:#222831}body::-webkit-scrollbar-thumb{background-color:#eee}@media screen and (max-width:767px){body{font-size:14px}}blockquote>*:last-child,body,.children,fieldset,ol.plain,ol.plain ol,ol.plain ul,ul.plain,ul.plain ol,ul.plain ul{margin:0}fieldset,legend,ol.plain,ol.plain ol,ol.plain ul,ul.plain,ul.plain ol,ul.plain ul{padding:0}address,blockquote,dd,details,dl,figure,.highlight,hr,iframe,legend,ol,p,pre,table,ul{margin:0 0 1.142em}blockquote,pre{overflow:auto}pre{scrollbar-color:#eee #222831}pre::-webkit-scrollbar{height:5px}pre::-webkit-scrollbar-track{background:#222831;border-bottom-left-radius:4px;border-bottom-right-radius:4px}pre::-webkit-scrollbar-thumb{background-color:#eee;border-bottom-left-radius:4px;border-bottom-right-radius:4px}li,p{word-wrap:break-word}ol,ul{padding:0 0 0 2.284em}ol.gapped li,ul.gapped li{border-top:1px dashed #eee;margin-top:1.142em;padding-top:1.142em}ol.gapped li:first-child,ul.gapped li:first-child{border-top:none;margin-top:0;padding-top:0}ol.gapped li mjx-container[jax=CHTML],ul.gapped li mjx-container[jax=CHTML]{margin:0}ul{list-style:square}details,figure>img,main,summary{display:block}figure>img.small{margin:0 auto}figcaption{font-size:.86em;font-style:italic;padding:5px;text-align:center}summary{outline:none}abbr{border:none;text-decoration:underline}b,strong{font-weight:700}audio,canvas,embed,img,meter,progress,svg,video{display:inline-block;height:auto;max-width:100%;vertical-align:middle}iframe{border:none;display:inline-block;width:100%}@media screen and (max-width:767px){iframe{height:auto}}svg{fill:#eee;overflow:hidden;width:14px}small{font-size:.86em}sub,sup{font-size:.714em;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.5ex}sup{top:-1ex}hr{background:#393e46;border:none;height:1px}h1,h2,h3,h4,h5,h6{letter-spacing:2px;line-height:1.5em}h1{font-size:2em;margin:0 0 .571em}h2{font-size:1.714em;margin:.666em 0}h3{font-size:1.428em;margin:.7em 0}h4{font-size:1.285em;margin:.888em 0}h5{font-size:1.142em;margin:1em 0}h6{font-size:1em;margin:1.142em 0}dt,legend{font-weight:700}a{background:0 0;color:#eee;position:relative;transition:all .3s;text-decoration:underline}a:hover{text-decoration:none}a img{transition:all .3s}a img:hover{opacity:.7}table{border-spacing:0;width:100%}table td,table th{border-right:1px solid #393e46;padding:5px;vertical-align:middle}table td:first-child,table td:first-child,table th:first-child,table th:first-child{border-left:1px solid #393e46}table td *:last-child,table th *:last-child{margin:0}table td.stem,table th.stem{text-align:center;width:30px}table td.invert,table th.invert{background-color:#eee;color:#222831}table th{text-align:left}table tbody tr:first-child th,table thead th,table tr:first-child td{border-top:1px solid #393e46}table tbody tr:nth-child(even) th,table thead th,table tfoot th,table tr:nth-child(even) td{background:#393e46}table tbody th,table td{border-bottom:1px solid #393e46}table.center th{text-align:center}table.plain td,table.plain th{background:0 0;border:none;font-weight:400;padding:0}blockquote{border-left:5px solid #393e46;font-style:italic;padding:10px}blockquote code,blockquote kbd,blockquote pre,blockquote samp{font-style:normal}code,kbd,pre,samp{font-family:andale mono,lucida console,monospace;font-size:.86em}code,*:not(blockquote)>pre{background:#393e46;color:#eee}code,pre,kbd{border-radius:4px;padding:4px 8px}kbd{background:#393e46;border-radius:3px;color:#eee}fieldset{border:none}label{cursor:pointer;vertical-align:middle}input[type=date],input[type=datetime-local],input[type=email],input[type=month],input[type=number],input[type=password],input[type=search],input[type=tel],input[type=text],input[type=time],input[type=url],input[type=week],select,textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:#393e46;border:1px solid #393e46;border-radius:0;box-sizing:border-box;color:inherit;font-family:inherit;font-size:inherit;margin:0;outline:none;padding:10px 18px;transition:all .3s;vertical-align:middle;width:100%}input[type=date]:focus,input[type=datetime-local]:focus,input[type=email]:focus,input[type=month]:focus,input[type=number]:focus,input[type=password]:focus,input[type=search]:focus,input[type=tel]:focus,input[type=text]:focus,input[type=time]:focus,input[type=url]:focus,input[type=week]:focus,select:focus,textarea:focus{border-color:#999}datalist,input[type=search]::-webkit-search-cancel-button{display:none}textarea{line-height:inherit;resize:none}input[type=checkbox],input[type=radio]{cursor:pointer;font-size:inherit;margin:0;vertical-align:middle}input[type=color]{background:0 0;border:none;cursor:pointer;height:35px;padding:0;vertical-align:middle;width:100%}input[type=color]::-webkit-color-swatch-wrapper{padding:0}input[type=color]::-webkit-color-swatch{border:none}input[type=range]{margin:0;vertical-align:middle;width:100%}a.button,button,input[type=button],input[type=reset],input[type=submit]{background:#393e46;border:1px solid #393e46;border-radius:5px;box-sizing:border-box;color:inherit;padding:10px 18px;transition:all .3s}a.button{display:inline-block;text-align:center}button,input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:none;appearance:none;border-radius:0;cursor:pointer;font-family:inherit;font-size:inherit;line-height:inherit;width:100%}a.button:hover,button:hover,input[type=button]:hover,input[type=reset]:hover,input[type=submit]:hover{background:#00adb5;border-color:#00adb5;color:#eee}a.button:hover{text-decoration:none}button[disabled=disabled],input[disabled=disabled]{cursor:default}button[disabled=disabled]:hover,input[type=button]:disabled:hover,input[type=reset]:disabled:hover,input[type=submit]:disabled:hover{background:#393e46}footer.sticky{bottom:0;left:0;position:fixed;right:0;z-index:1}.row:after,.row:before{content:" ";display:table}.row:after{clear:both}.children,ol.plain,ol.plain ol,ol.plain ul,ul.plain,ul.plain ol,ul.plain ul{list-style:none}.hidden{display:none}.error,.required{color:#a94442}.screen-reader-text{display:block;height:1px;left:-9999em;overflow:hidden;position:fixed;top:-9999em;width:1px;z-index:-9999}.aligncenter{display:block;margin-left:auto;margin-right:auto}.alignleft{float:left;margin-bottom:10px;margin-right:10px}.alignright{float:right;margin-bottom:10px;margin-left:10px}.center{text-align:center}.right{text-align:right}.responsive{overflow-x:auto}.highlight{line-height:1em}.highlight .chroma{overflow-x:auto}.highlight .lntd:first-child{text-align:right;width:40px}.highlight .lntd:first-child pre{border-bottom-right-radius:0;border-top-right-radius:0}.highlight .lntd:last-child pre{border-bottom-left-radius:0;border-top-left-radius:0}.highlight code,.highlight pre{margin:0;padding:0}.highlight pre.chroma{padding:4px 8px}.highlight code{background:inherit}.highlight table{margin:0}.highlight table td{border:none;padding:0}.highlight table td.code{border-top:none;padding-right:8px}.highlight table td.code pre{font-size:14px}@media screen and (max-width:767px){.highlight table td.code pre{font-size:12px}}.highlight table td.gutter{padding-right:8px;width:22px}.highlight table td .lineno{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.highlight table tr:first-child td{border-top:none}.highlight .bg{background-color:#393e46}.highlight .chroma{background-color:#393e46;color:#eee;overflow-x:auto}.highlight .chroma .err{color:#f85149}.highlight .chroma .x{color:#f85149}.highlight .chroma .lnlinks{outline:none;text-decoration:none;color:inherit}.highlight .chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}.highlight .chroma .lntable{border-spacing:0;padding:0;margin:0;border:0}.highlight .chroma .hl{background-color:rgba(0,173,181,.15)}.highlight .chroma .lnt{white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#8b949e}.highlight .chroma .ln{white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#8b949e}.highlight .chroma .line{display:flex}.highlight .chroma .k{color:#ff7b72}.highlight .chroma .kc{color:#ff7b72}.highlight .chroma .kd{color:#ff7b72}.highlight .chroma .kn{color:#ff7b72}.highlight .chroma .kp{color:#ff7b72}.highlight .chroma .kr{color:#ff7b72}.highlight .chroma .kt{color:#ff7b72}.highlight .chroma .o{color:#ff7b72}.highlight .chroma .ow{color:#ff7b72}.highlight .chroma .n{color:#eee}.highlight .chroma .na{color:#79c0ff}.highlight .chroma .nb{color:#79c0ff}.highlight .chroma .bp{color:#d2a8ff}.highlight .chroma .nc{color:#ffa657}.highlight .chroma .no{color:#79c0ff}.highlight .chroma .nd{color:#ffa657}.highlight .chroma .ni{color:#ffa657}.highlight .chroma .ne{color:#ffa657}.highlight .chroma .nf{color:#79c0ff}.highlight .chroma .fm{color:#79c0ff}.highlight .chroma .nl{color:#ffa657}.highlight .chroma .nn{color:#ffa657}.highlight .chroma .nx{color:#ffa657}.highlight .chroma .py{color:#ffa657}.highlight .chroma .nt{color:#ffa657}.highlight .chroma .nv{color:#eee}.highlight .chroma .vc{color:#eee}.highlight .chroma .vg{color:#eee}.highlight .chroma .vi{color:#eee}.highlight .chroma .vm{color:#eee}.highlight .chroma .l{color:#79c0ff}.highlight .chroma .ld{color:#79c0ff}.highlight .chroma .s{color:#a5d6ff}.highlight .chroma .sa{color:#a5d6ff}.highlight .chroma .sb{color:#a5d6ff}.highlight .chroma .sc{color:#a5d6ff}.highlight .chroma .dl{color:#a5d6ff}.highlight .chroma .sd{color:#9da9b6}.highlight .chroma .s2{color:#a5d6ff}.highlight .chroma .se{color:#a5d6ff}.highlight .chroma .sh{color:#a5d6ff}.highlight .chroma .si{color:#a5d6ff}.highlight .chroma .sx{color:#a5d6ff}.highlight .chroma .sr{color:#a5d6ff}.highlight .chroma .s1{color:#a5d6ff}.highlight .chroma .ss{color:#a5d6ff}.highlight .chroma .m{color:#79c0ff}.highlight .chroma .mb{color:#79c0ff}.highlight .chroma .mf{color:#79c0ff}.highlight .chroma .mh{color:#79c0ff}.highlight .chroma .mi{color:#79c0ff}.highlight .chroma .il{color:#79c0ff}.highlight .chroma .mo{color:#79c0ff}.highlight .chroma .c{color:#9da9b6}.highlight .chroma .ch{color:#9da9b6}.highlight .chroma .cm{color:#9da9b6}.highlight .chroma .c1{color:#9da9b6}.highlight .chroma .cs{color:#9da9b6}.highlight .chroma .cp{color:#9da9b6}.highlight .chroma .cpf{color:#9da9b6}.highlight .chroma .gd{color:#ffa198;background-color:#67060c}.highlight .chroma .gi{color:#56d364;background-color:#0c5325}.highlight .chroma .w{color:#9da9b6}.mermaid{display:flex;justify-content:center;margin:0 0 1.142em}.mermaid svg{width:100%}.content{margin-left:auto;margin-right:auto;max-width:740px;padding:30px 10px}#social{background:#393e46;display:flex;font-size:0;line-height:0;text-align:center;z-index:1}#social li{font-size:14px;line-height:30px;width:calc(100%/3)}#social li.email:hover a{background:#c0392b}#social li.adplist:hover a{background:#000}#social li.github:hover a{background:#4078c0}#social li.leetcode:hover a{background:#da532c}#social li.linkedin:hover a{background:#0077b5}#social li.twitter:hover a{background:#1da1f2}#social a{border:none;display:block;transition:all .3s}#social a::after{display:none}#social.home{background:rgba(19,59,92,.25);left:0;position:absolute;right:0;top:0}footer{background:#393e46;font-size:12px;letter-spacing:2px;line-height:30px}footer a{color:#eee;text-decoration:none}footer a:hover{color:#c0392b}@media screen and (max-width:767px){footer{font-size:10px}}#credit{margin:0;text-align:center}#credit a::after{display:none}#home h1,#home h2{letter-spacing:.1em;position:relative;text-align:center;z-index:1}#home h1{font-size:5em;text-shadow:2px 2px rgba(0,0,0,.25)}@media screen and (max-width:1023px){#home h1{font-size:4em}}@media screen and (max-width:1000px){#home h1{font-size:2em;text-shadow:1px 1px rgba(0,0,0,.25)}}#home h2{margin:0;text-shadow:1px 1px rgba(0,0,0,.25)}@media screen and (max-width:1000px){#home h2{font-size:1em}}#short{height:70vh;padding:30vh 0 0;position:relative}#short figure{background-color:#222831;background-image:url(/static/images/aristorinjuang_18052019.jpg);background-position:50%;background-repeat:no-repeat;background-size:cover;height:100vh;left:0;position:fixed;top:0;width:100vw;z-index:-1}#short figure img{opacity:0}@media screen and (max-width:1023px){#short{height:56vh;padding:44vh 0 0}}#scroll{display:block;background:#222831;border:none;border-radius:50% 50% 0 0;bottom:0;color:#eee;line-height:30px;padding:0;position:absolute;right:calc(50% - 25px);text-align:center;width:50px}#scroll::after{display:none}#scroll:hover{background:#393e46}#scroll svg{fill:none;width:1em}#long{background:#222831}#articles-list span,#articles-list time{display:block}#articles-list time{font-size:.666em;letter-spacing:2px;transition:all .3s}#articles-list span{font-size:1.142em;letter-spacing:2px;line-height:2em}#articles-list li{margin-top:30px;transition:all .3s}#articles-list li:first-child{margin-top:0}#articles-list li a{text-decoration:none}#articles-list li:hover a,#articles-list li:hover time{color:#c0392b}#article-date{font-size:.666em;letter-spacing:2px}#article-share{bottom:130px;left:-70px;position:fixed;transform:rotate(90deg);z-index:1}#article-share li{float:left}#article-share li.facebook a{background:#1877f2;color:#000}#article-share li.facebook svg{fill:#000}#article-share li.twitter a{background:#1da1f2;color:#14171a}#article-share li.twitter svg{fill:#14171a}#article-share li:first-child a{border-top-left-radius:4px}#article-share li:last-child a{border-top-right-radius:4px}#article-share li:hover a{opacity:.8}#article-share li a{display:block;font-size:.86em;line-height:30px;padding:0 10px;text-align:center;text-decoration:none}#article-share li a::after{display:none}#article-share li svg{margin-left:5px}@media screen and (max-width:819px){#article-share{position:static;transform:none}#article-share li{width:50%}#article-share li:first-child a{border-bottom-left-radius:4px;border-top-left-radius:4px}#article-share li:last-child a{background:#1da1f2;border-bottom-right-radius:4px;border-top-right-radius:4px}}#languages ul{left:15px;list-style:none;margin:0;padding:0;position:fixed;top:45px;transform:rotate(90deg);white-space:nowrap;width:0;z-index:1}#languages ul li{float:left}#languages ul li.en a{background:#0a3161;color:#fff}#languages ul li.id a{background:red;color:#fff}#languages ul li:first-child a{border-top-left-radius:4px}#languages ul li:last-child a{border-top-right-radius:4px}#languages ul li:hover a{opacity:.8}#languages ul li a{display:block;font-size:.86em;line-height:30px;padding:0 10px;text-align:center;text-decoration:none}#languages ul li a::after{display:none}@media screen and (max-width:819px){#languages h2{height:auto;position:static;width:auto}#languages ul{list-style:square;margin:0 0 1.142em;padding:0 0 0 2.284em;position:static;transform:none;width:auto}#languages ul li.en,#languages ul li.id{float:none}#languages ul li.en a,#languages ul li.id a{background:0 0;color:#eee;display:inline-block;font-size:inherit;line-height:inherit;padding:0}#languages ul li.en a::after,#languages ul li.id a::after{display:block}}.webpushr-amp-subscribe{background-color:#0043ff;border:none;color:#fff;font-family:Arial,helvetica neue,Helvetica,sans-serif;font-size:.86em;font-weight:500;margin-bottom:10px;max-width:100%;padding:5px;vertical-align:middle;text-transform:none}.webpushr-amp-subscribe-icon{display:inline-block;height:14px;margin-left:5px;vertical-align:middle;width:14px}#disqus_recommendations{display:none}@media screen and (max-width:767px){#disqus_thread{display:none}}.fb-comments{background:#fff;border:1px solid #dddfe2;border-radius:3px}.fb-comments.fb_iframe_widget_fluid{display:inline-block}.semantic-tabs-heads{font-family:andale mono,lucida console,monospace;font-size:.86em;display:flex;list-style:none;margin:0;padding:0}.semantic-tabs-heads li{border-top-left-radius:4px;border-top-right-radius:4px;cursor:pointer;padding:0 8px;transition:all .3s}.semantic-tabs-heads li.active,.semantic-tabs-heads li:hover{background:#393e46}.semantic-tabs-element :last-child{margin:0}.semantic-tabs-element pre{border-top-left-radius:0;border-top-right-radius:0}.bordered .semantic-tabs-element{border:2px solid #393e46;border-bottom-left-radius:4px;border-bottom-right-radius:4px;padding:10px 2.284em}.bordered .semantic-tabs-element pre{border-top-left-radius:4px;border-top-right-radius:4px}
+	</style>
+</head>
+<body>
+	<header>
+		<ul id="social" class="plain row">
+			<li class="email">
+				<a href="mailto:contact@aristorinjuang.com" title="Email">
+					<span class="screen-reader-text">Email</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg>
+				</a>
+			</li>
+			<li class="github">
+				<a href="https://github.com/aristorinjuang" title="GitHub" target="_blank" rel="noopener noreferrer">
+					<span class="screen-reader-text">GitHub</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+				</a>
+			</li>
+			<li class="linkedin">
+				<a href="https://www.linkedin.com/in/aristorinjuang" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+					<span class="screen-reader-text">LinkedIn</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+				</a>
+			</li>
+		</ul>
+	</header>
+	<main>
+<section id="page" class="content">
+	<h1>Data Analysis and Probability - Part 1: Graph, Frequency and Histograms, Data Distributions, Independent and Dependent Events</h1>
+	<p id="article-date"><time datetime="2026-01-16T00:00:00Z">January 16, 2026</time></p>
+
+	<figure><img src="/uploads/media/ea2e8782697f1b6e.webp" alt="Data Analysis and Probability - Part 1: Graph, Frequency and Histograms, Data Distributions, Independent and Dependent Events"></figure><figure>
+  <img src="/uploads/media/a9d21dbc971d09df.webp" alt="Algebra 1 by Holt McDougal">
+  <figcaption>Algebra 1 by Holt McDougal</figcaption>
+</figure>
+<p>This time, the reference comes from Holt McDougal&#39;s Algebra 1 textbook. The final chapter, Chapter 10, covers Data Analysis and Probability. This is a great book. I recommend that you read this book.</p>
+<p>Most of the content of this book is similar to Algebra 1: Parts <a href="/algebra-1-part-1-compound-inequality-graphing-slope-intercept-form-point-slope-form-standar-form-linear-equation-system-equations">1</a>, <a href="/algebra-1-part-2-functions-sequences-graph-with-absolute-value-simplifying-square-roots-exponential-growth-decay">2</a>, and <a href="/algebra-1-part-3-polynomials-quadratic-equations-parabola-vertex-irrational-numbers">3</a>. The special one in this book, I think, is having a chapter that covers Data Analysis and Probability.</p>
+<p>I created a summary or short of chapter 10 of the book. It may not be perfect, in my opinion, due to the lack of some examples. But it covers all the points of the chapter. Some of this content also includes content from ChatGPT and Gemini.</p>
+<h2>Bar, Pie, and Line Graph</h2>
+<h3>Bar Graph</h3>
+<p><canvas id="barGraph"></canvas></p>
+<p>The graph above is an example of a bar graph.</p>
+<p>A bar graph is a graph that displays categorical data using rectangular bars, where the length or height of each bar represents the value or frequency of that category. Bar charts can be vertical (most common) and horizontal (useful when category names are long).</p>
+<h3>Pie Graph</h3>
+<p><canvas id="pieGraph"></canvas></p>
+<p>The graph above is an example of a pie graph.</p>
+<p>A pie graph is a circular graph used to show how a whole is divided into parts. Each slice of the pie represents a category, and the size of each slice shows its proportion or percentage of the total. The entire circle represents 100% of the data. You should choose a pie graph when your goal is to show parts of a whole, not to compare exact values.</p>
+<h3>Line Graph</h3>
+<p><canvas id="lineGraph"></canvas></p>
+<p>The graph above is an example of a line graph.</p>
+<p>A line graph is a graph that displays data points connected by straight line segments to show how a quantity changes over time or over a continuous variable. The horizontal axis (x-axis) usually represents time or another continuous variable. The vertical axis (y-axis) represents the measured value. Each point shows a value at a specific moment, and the line highlights the trend or pattern. You should choose a line graph when your main goal is to show change, trends, or movement.</p>
+<h2>Frequency and Histograms</h2>
+<p><strong>Frequency</strong> refers to how often a value or range of values appears in a data set, while a <strong>histogram</strong> is a graph that displays these frequencies for continuous numerical data. In a histogram, data are grouped into intervals called <strong>bins</strong>, and adjacent bars show the frequency of values within each interval, with no gaps between bars. Histograms help reveal the shape of a data distribution and are especially useful for understanding patterns in large data sets rather than focusing on individual data points.</p>
+<p>Here is an example.</p>
+<p>The final scores for each golfer in a tournament are given below.</p>
+<p>77, 71, 70, 82, 75, 76, 72, 70, 77, 74, 71, 75, 68, 72, 75, 74.</p>
+<p>Here is the frequency table with intervals based on the data above.</p>
+<table>
+  <thead>
+    <tr>
+      <th colspan="2" class="center">Golf Tournament Scores</th>
+    </tr>
+    <tr>
+      <th>Scores</th>
+      <th>Frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>68-70</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>71-73</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>74-76</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>77-79</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>80-82</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>Here is the histogram based on the table above.</p>
+<p><canvas id="histogram"></canvas></p>
+<h3>Cumulative Frequency</h3>
+<p>Cumulative frequency is the running total of frequencies as you move through a data set in order, usually from the smallest values to the largest. Instead of showing how many times each individual value or interval occurs, cumulative frequency shows how many data points are <strong>less than or equal to</strong> a given value or class boundary.</p>
+<p>Here is an example.</p>
+<p>The heights in inches of the players on a school basketball team are given below.</p>
+<p>72, 68, 71, 70, 69, 79, 76, 72, 75, 72, 74, 68, 70, 69, 75, 72, 71, 73, 76</p>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3" class="center">Basketball Players&#39; Heights</th>
+    </tr>
+    <tr>
+      <th>Height (inch)</th>
+      <th>Frequency</th>
+      <th>Cumulative Frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>68-70</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>71-73</td>
+      <td>8</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>74-76</td>
+      <td>5</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <td>77-79</td>
+      <td>1</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Stem-and-leaf Plot</h3>
+<p>A stem-and-leaf plot is a way to organize and display numerical data that preserves the original values while showing their overall distribution. Each number is split into a <strong>stem (the leading digit or digits)</strong> and a <strong>leaf (the last digit)</strong>, where the stems are listed in order and the leaves are written beside them. This makes it easy to see patterns such as the shape of the data, clusters, gaps, and the range, while still allowing you to read the exact data values. Stem-and-leaf plots are especially useful for small to moderate data sets when you want both a visual summary and the raw numbers at the same time.</p>
+<p>Here are examples.</p>
+<ul>
+  <li>
+    <p>The numbers of students in each of the elective classes at a school are given below. Use the data to make a stem-and-leaf plot.</p>
+    <p>24, 14, 12, 25, 32, 18, 23, 24, 9, 18, 34, 28, 24, 27.</p>
+    <h4>Number of Students in Elective Classes</h4>
+    <table>
+      <thead>
+        <tr>
+          <th class="right">Stem</th>
+          <th>Leaves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="right">0</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td class="right">1</td>
+          <td>2 4 8 8</td>
+        </tr>
+        <tr>
+          <td class="right">2</td>
+          <td>3 4 4 4 5 7 8</td>
+        </tr>
+        <tr>
+          <td class="right">3</td>
+          <td>2 4</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Key: 2|3 means 23.</p>
+  </li>
+  <li>
+    <p>Marty&#39;s and Bill&#39;s scores for ten games of bowling are given below. Use the data to make a back-to-back stem-and-leaf plot.</p>
+    <p>Marty: 127, 149, 167, 134, 121, 127, 143, 123, 168, 162.</p>
+    <p>Bill: 129, 138, 141, 124, 139, 160, 149, 145, 128, 130.</p>
+    <h4>Bowling Scores</h4>
+    <table>
+      <thead>
+        <tr>
+          <th class="right">Marty</th>
+          <th class="stem"></th>
+          <th>Bill</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="right">7 3 1</td>
+          <td class="stem">12</td>
+          <td>4 8 9</td>
+        </tr>
+        <tr>
+          <td class="right">7 4</td>
+          <td class="stem">13</td>
+          <td>0 8 9</td>
+        </tr>
+        <tr>
+          <td class="right">9 3</td>
+          <td class="stem">14</td>
+          <td>1 5 9</td>
+        </tr>
+        <tr>
+          <td class="right"></td>
+          <td class="stem">15</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="right">8 7 2</td>
+          <td class="stem">16</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Key: |14|1 means 141, 3|14| means 143.</p>
+  </li>
+</ul>
+<h2>Data Distributions</h2>
+<p>A <em>measure of central tendency</em> describes the center of a set of data. Measures of central tendency include the <em>mean</em>, <em>mediam</em>, and <em>mode</em>.</p>
+<ul>
+  <li>The <strong>mean</strong> is the average of the data values, or the sum of the values in the set divided by the number of values in the set.</li>
+  <li>The <strong>median</strong> is the middle value when the values are in numerical order, or the mean of the two middle numbers if there are an even number of values.</li>
+  <li>The <strong>mode</strong> is the value of values that occur most often. A data set may have one mode or more than one mode. If no value occurs more often than another, the data set has no mode.</li>
+</ul>
+<p>The <strong>range</strong> of a set of data is the difference between the greatest and least values in the set. The range is one measure of the spread of a data set.</p>
+<p>Here is an example.</p>
+<p>The numbers of hours Isaac did homework on six days are 3, 8, 4, 6, 5, and 4. Find the mean, median, mode, and range of the data set.</p>
+<p><strong>mean</strong>: \(\Large \frac{3 + 4 + 4 + 5 + 6 + 8}{6} = \frac{30}{6} = 5\)</p>
+<p><strong>median</strong>: There is an even numbers of values (4 and 5). We need to find the mean of the two middle values. \(\Large \frac{4 + 5}{2} = \frac{9}{2} = 4.5\)</p>
+<p><strong>mode</strong>: 4 (4 occurs more than any other value.)</p>
+<p><strong>range</strong>: 8 - 3 = 5 (Subtract the least value from the greatest value.)</p>
+<h3>Outlier</h3>
+<p>An outlier is a data value that lies far away from most of the other values in a data set, making it noticeably different from the overall pattern. Outliers can occur due to measurement errors, data entry mistakes, or genuine unusual observations. They are important to identify because they can strongly affect summary statistics such as the mean and can influence the interpretation of data distributions, trends, and conclusions.</p>
+<p>Here is an example for the data of 5, 7, 8, 9, 10, 12, and 54.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Statistic</th>
+      <th>With Outlier<br>(5, 7, 8, 9, 10, 12, 54)</th>
+      <th>Without Outlier<br>(5, 7, 8, 9, 10, 12)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mean</strong></td>
+      <td>15</td>
+      <td>8.5</td>
+    </tr>
+    <tr>
+      <td><strong>Median</strong></td>
+      <td>9</td>
+      <td>8.5</td>
+    </tr>
+    <tr>
+      <td><strong>Mode</strong></td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td><strong>Range</strong></td>
+      <td>49</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Quartiles</h3>
+<p>Quartiles divide a data set into four equal parts. Each quartile contains one-fourth of the values in the set. The <strong>first quartile</strong> is the median of the lower half of the data set. The <strong>second quartile</strong> is the median of the data set, and the <strong>third quartile</strong> is the median of the upper half of the data set.</p>
+<p>The <strong>interquartile range (IQR)</strong> of a data set is the difference between the third and first quartiles. It represents the range of th emiddle half of the data.</p>
+<table class="center">
+  <thead>
+    <tr>
+      <th colspan="15" class="invert">Range: 9 - 1 = 8</th>
+    </tr>
+    <tr>
+      <th colspan="3"></th>
+      <th colspan="9" class="invert">IQR: 7 - 3 = 4</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td><strong>3</strong></td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+      <td><strong>5</strong></td>
+      <td>6</td>
+      <td>6</td>
+      <td>7</td>
+      <td><strong>7</strong></td>
+      <td>8</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan="7" class="invert">First quartile (Q1): 3</th>
+      <th>Median (Q2): 5</th>
+      <th colspan="7" class="invert">Third quartile (Q3): 7</th>
+    </tr>
+  </tfoot>
+</table>
+<h3>Box-and-Whisker Plot</h3>
+<p>A <strong>box-and-whisker plot</strong> can be used to show how the values in a data set are distributed. You need five values to make a box-and-whisker plot: the minimum (or least value), first quartile, median, third quartile, and maximum (or greatest value).</p>
+<p>Here is an example of a box-and-whisker plot based on the data above.</p>
+<figure>
+  <img src="/uploads/media/d67e987d61964658.webp" alt="A Box-and-Whisker Plot">
+  <figcaption>A Box-and-Whisker Plot</figcaption>
+</figure>
+<h3>Dot Plots and Distributions</h3>
+<p>A <strong>dot plot</strong> is a data representation that uses a number line and x&#39;s, dots, or other symbols to show frequency. Dot plots are sometimes called line plots.</p>
+<h4>Types of Distributions</h4>
+<p>A dot plot gives a visual representation of the distribution, or &#34;shape&#34;, of the data. Here are the types of distributions of dot plots.</p>
+<h5>Uniform Distribution</h5>
+<p><canvas id="uniformDotPlot"></canvas></p>
+<p>In a <strong>uniform distribution</strong>, all data points have an approximately equal frequency.</p>
+<h5>Symmetric Distribution</h5>
+<p><canvas id="symmetricDotPlot"></canvas></p>
+<p>In a <strong>symmetric distribution</strong>, a vertical line can be drawn and the result is a graph divided in two parts that are approximate mirror images of each other.</p>
+<h5>Skewed Distribution</h5>
+<p><canvas id="skewedDotPlot"></canvas></p>
+<p>In a <strong>skewed distribution</strong>, the data is not uniform or symmetric. The data may be skewed to the right or skewed to the left.</p>
+<h3>Sampling and Bias</h3>
+<p>If you wanted to collect data about a very large group of people, you would most likely need to survey a smaller group. The large group that contains all the people you could survey is called a <em>population</em>. The smaller group is called a <em>sample</em>.</p>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Random Samples</th>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <th>Definition</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Simple Random Sample</th>
+      <td>Every member of the population has an equal change of being chosen for the sample.</td>
+      <td>The names of all students in your class are placed in a hat and three names are chosen at random.</td>
+    </tr>
+    <tr>
+      <th>Stratified Random Sample</th>
+      <td>The population is divided into similar groups. Then a simple random sample is chosen from each group.</td>
+      <td>Your class is divided into boys and girls and two students are chosen at random from each group.</td>
+    </tr>
+    <tr>
+      <th>Systematic Random Sample</th>
+      <td>A member of the population is chosen for the sample at a regular interval.</td>
+      <td>Every third student who comes into the classroom is chosen.</td>
+    </tr>
+  </tbody>
+</table>
+<p>A random sample is not biased because no part of the population is favored over another. In a biased sample, one or more parts of the population have an advantage for being chosen for the sample.</p>
+<p>There are two main types of biased samples.</p>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Biased Samples</th>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <th>Definition</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Convenience Sample</th>
+      <td>Those members of the population that are easily accessed are chosen for the sample.</td>
+      <td>A reporter questions people he personally knows.</td>
+    </tr>
+    <tr>
+      <th>Voluntary Response Sample</th>
+      <td>Members of the population who want to participate make up the sample.</td>
+      <td>A reporter questions people who fill out comment cards and indicate that they would like to be contacted.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Probability</h2>
+<h3>Experimental Probability</h3>
+<p>An <strong>experiment</strong> is an activity involving change. Each repetition or observation of an experiment is a <strong>trial</strong>, and each possible result is an <strong>outcome</strong>. The <strong>sample space</strong> of an experiment is the set of all possible outcomes.</p>
+<table>
+  <tbody>
+    <tr>
+      <th>Experiment</th>
+      <td>Rolling a number cube</td>
+      <td>Tossing a coin</td>
+    </tr>
+    <tr>
+      <th>Sample Space</th>
+      <td>1, 2, 3, 4, 5, 6</td>
+      <td>heads, tails</td>
+    </tr>
+  </tbody>
+</table>
+<p>An <strong>event</strong> is an outcome or set of outcomes in an experiment. <strong>Probability</strong> is the measure of how likely an event is to occur. Probabilities are written as fractions or decimals from 0 to 1, or as percents from 0% to 100%.</p>
+<table class="center">
+  <thead>
+    <tr>
+      <th>Impossible</th>
+      <th>Unlikely</th>
+      <th>As likely as not</th>
+      <th>Likely</th>
+      <th>Certain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0%</td>
+      <td></td>
+      <td>50%</td>
+      <td></td>
+      <td>100%</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Events with a probability of 0% never happen.</th>
+      <th></th>
+      <th>Events with a probability of 50% have the same change of happening as not.</th>
+      <th></th>
+      <th>Events with a probability of 100% always happen.</th>
+    </tr>
+  </tfoot>
+</table>
+<p>You can estimate the probability of an event by performing an experiment. The <strong>experimental probability</strong> of an event is the ratio of the number of times the event occurs to the number of trials. The more trials performed, the more accurate the estimate is likely to be.</p>
+<p>\[\text{experimental probability} = \frac{\text{number of times the event occurs}}{\text{number of trials}}\]</p>
+<p>You can use experimental probability to make <em>predictions</em>. A <strong>prediction</strong> is an estimate or guess about something that has not yet happened.</p>
+<p>Here is an example.</p>
+<p>A manufacturer inspects 800 light bulbs and finds that 796 of them have no defects.</p>
+<ol>
+  <li>
+    <p>What is the experimental probability that a light bulb chosen at random has no defects?</p>
+    <p>Find the experimental probability that a light bulb has no defects.</p>
+    <p>\(\Large \frac{\text{number of times the event occurs}}{\text{number of trials}} = \frac{796}{800} = 99.5\%\)</p>
+    <p>The experimental probability that a light bulb has no defects is <strong>99.5%</strong>.</p>
+  </li>
+  <li>
+    <p>The manufacturer sent a shipment of 2400 light bulbs to a retail store. Predict the number of light bulbs in the shipment that are likely to have no defects.</p>
+    <p>Find 99.5% of 2400.</p>
+    <p>0.995(2400) = <strong>2388</strong></p>
+    <p>The manufacturer predicts that 2388 light bulbs have no defects.</p>
+  </li>
+</ol>
+<h3>Theoretical Probability</h3>
+<p>The <strong>theoretical probability</strong> of an event is the ratio of the number of ways the event can occur to the total number of equally likely outcomes.</p>
+<p>\[\text{theoretical probability} = \frac{\text{number of ways the event can occur}}{\text{total number of equally likely outcomes}}\]</p>
+<p>An experiment in which all outcomes are equally likely is said to be <strong>fair</strong>. You can usually assume that experiments involving coins an dnumber cubes are fair.</p>
+<p>When you toss a coin, there are two possible outcomes, heads or tails. The table below shows the theoretical probabilities and experimental results of tossing a coin in 10 times.</p>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>P(heads)</th>
+      <th>P(tails)</th>
+      <th>P(heads) + P(tails)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Experimental Probability</th>
+      <td>\(\frac{3}{10}\)</td>
+      <td>\(\frac{7}{10}\)</td>
+      <td>\(\frac{3}{10} + \frac{7}{10} = \frac{10}{10} = 1\)</td>
+    </tr>
+    <tr>
+      <th>Theoretical Probability</th>
+      <td>\(\frac{1}{2}\)</td>
+      <td>\(\frac{1}{2}\)</td>
+      <td>\(\frac{1}{2} + \frac{1}{2} = \frac{2}{2} = 1\)</td>
+    </tr>
+  </tbody>
+</table>
+<p>The sum of the probability of heads and the probability of tails is 1, or 100%. This is because it is certain that one of the two outcomes will always occur.</p>
+<p>\[\text{P(event happening)} + \text{P(event not happening)} = 1\]</p>
+<p>The <strong>complement</strong> of an event is all the outcomes in the sample space that are not included in the event. The sume of the probabilities of an event and its complement is 1, or 100%, because the event will either happen or not happen. Two events are <em>complementary events</em> if the sum of their probabilities equals 1 and if one event occurs if and only if the other does not.</p>
+<p>\[\text{P(event)} + \text{P(complement of event)} = 1\]</p>
+<p><em>Odds</em> are another way to indicate the likelihood of an event. <strong>Odds</strong> express likelihood by comparing the number of ways an event can happen to the number of ways an event can fail to happen. The <em>odds in favor of an event</em> describe the likelihood that the event will occur. The <em>odds against an event</em> describe the likelihood that the event will not occur.</p>
+<p>Odds are usually written with a colon in the form <em>a:b</em>, but can also be written as <em>a</em> to <em>b</em> or \(\Large \frac{a}{b}\).</p>
+<p>\[\text{odds in favor} = \frac{\text{number of ways an event can happen}}{\text{number of ways an event can fail to happen}} = a:b\]</p>
+<p>\[\text{odds against} = \frac{\text{number of ways an event can fail to happen}}{\text{number of ways an event can happen}} = b:a\]</p>
+<p>\(a\) represents the number of ways an event can occur.</p>
+<p>\(b\) represents the number of ways an event can fail to occur.</p>
+<p>The two numbers given as the odds will add up to the total number of possible outcomes. You can use this relationship to convert between odds and probabilities.</p>
+<h2>Independent and Dependent Events</h2>
+<p>Events are <strong>independent events</strong> if the occurrence of one event does not affect the probability of the other. Events are <strong>dependent events</strong> if the occurrence of one event does affect the probability of the other.</p>
+<p>Here is an example.</p>
+<p>Tell whether each set of events is independent or dependent. Explain your answer.</p>
+<ol>
+  <li>
+    <p>A dime lands heads up and a nickel lands heads up.</p>
+    <p>The result of tossing a dime does not affect the result of tossing a nickel, so the events are <strong>independent</strong>.</p>
+  </li>
+  <li>
+    <p>You choose a colored game piece in a board game, and then your sister picks another color.</p>
+    <p>Your sister cannot pick the same color you picked, and there are fewer game pieces for your sister to choose from after you choose, so the events are <strong>dependent</strong>.</p>
+  </li>
+</ol>
+<p>To determine the probability of two independent events, multiply the probabilities of the two events.</p>
+<p>If \(A\) and \(B\) are independent events, then \(P(A \text{ and } B) = P(A) \cdot P(B)\).</p>
+<p>To determine the probability of two dependent events, multiply the probability of the first event times the probability of the second event after the first event has occurred.</p>
+<p>If \(A\) and \(B\) are dependent events, then \(P(A \text{ and } B) = P(A) \cdot P(B \text{ after } A)\).</p>
+
+
+	<h2>Related Articles</h2>
+	<ul>
+		<li><a href="/data-analysis-and-probability-part-2-permutations-binomial-normal-distribution-hypothesis-testing/">Data Analysis and Probability - Part 2: Permutations, Binomial Distribution, Normal Distribution, and Hypothesis Testing</a></li>
+		<li><a href="/algebra-2-part-3-function-transformations-equations-trigonometry-modeling/">Algebra 2 - Part 3: Function Transformations, Equations, Trigonometry, and Modeling</a></li>
+		<li><a href="/algebra-2-part-2-polynomial-graphs-rational-exponents-radicals-exponential-models-logarithms/">Algebra 2 - Part 2: Polynomial Graphs, Rational Exponents and Radicals, Exponential Models, and Logarithms</a></li>
+		<li><a href="/algebra-2-part-1-complex-number-polynomial-arithmetic-polynomial-factorization-geometric-series/">Algebra 2 - Part 1: Complex Number, Polynomial Arithmetic, Polynomial Factorization, and Geometric Series</a></li>
+	</ul>
+
+	<ul id="article-share" class="plain row">
+		<li class="facebook">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=%2fdata-analysis-and-probability-part-1-graph-frequency-histograms-distributions-independent-dependent-events" target="_blank" rel="noopener noreferrer" data-title="Data Analysis and Probability - Part 1: Graph, Frequency and Histograms, Data Distributions, Independent and Dependent Events">
+				<span>Share</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+			</a>
+		</li>
+		<li class="twitter">
+			<a href="https://twitter.com/intent/tweet?text=Data%20Analysis%20and%20Probability%20-%20Part%201%3a%20Graph%2c%20Frequency%20and%20Histograms%2c%20Data%20Distributions%2c%20Independent%20and%20Dependent%20Events&url=%2fdata-analysis-and-probability-part-1-graph-frequency-histograms-distributions-independent-dependent-events" target="_blank" rel="noopener noreferrer" data-title="Data Analysis and Probability - Part 1: Graph, Frequency and Histograms, Data Distributions, Independent and Dependent Events">
+				<span>Tweet</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+			</a>
+		</li>
+	</ul>
+	<script>
+	(function() {
+		var share = document.getElementById('article-share');
+		if (!share) return;
+		var url = encodeURIComponent(location.href);
+		share.querySelectorAll('a').forEach(function(a) {
+			if (a.href.indexOf('facebook.com/sharer') !== -1) {
+				a.href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+			} else if (a.href.indexOf('twitter.com/intent') !== -1) {
+				a.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(a.getAttribute('data-title')) + '&url=' + url;
+			}
+		});
+	})();
+	</script>
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	<script>
+	(function() {
+		var d = document, s = d.createElement('script');
+		s.src = 'https://aristorinjuang.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+	})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<script>
+	MathJax = {
+		tex: {
+			displayMath: [['\\[', '\\]'], ['$$', '$$']],
+			inlineMath: [['\\(', '\\)']]
+		},
+		loader:{
+			load: ['ui/safe']
+		},
+	};
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script>
+	Chart.defaults.color = '#eee';
+	</script>
+
+<script>
+
+const barGraph = document.getElementById('barGraph')
+const pieGraph = document.getElementById('pieGraph')
+const lineGraph = document.getElementById('lineGraph')
+const histogram = document.getElementById('histogram')
+const uniformDotPlot = document.getElementById('uniformDotPlot')
+const symmetricDotPlot = document.getElementById('symmetricDotPlot')
+const skewedDotPlot = document.getElementById('skewedDotPlot')
+
+new Chart(barGraph, {
+  type: 'bar',
+  data: {
+    labels: ['Hansen', 'Adams', 'Warren', 'Sweeney', 'Marino'],
+    datasets: [{
+      label: 'Candidate',
+      data: [52, 93, 42, 65, 28],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Votes'
+        }
+      }
+    }
+  }
+})
+
+new Chart(pieGraph, {
+  type: 'pie',
+  data: {
+    labels: ['Strongly disagree', 'Strongly agree', 'Agree', 'Disagree', 'No opinion'],
+    datasets: [{
+      label: 'Opinion Survey',
+      data: [43, 36, 27, 63, 9],
+      borderWidth: 1
+    }]
+  }
+})
+
+new Chart(lineGraph, {
+  type: 'line',
+  data: {
+    labels: ['Midnight', '4:00 AM', '8:00 AM', 'Noon', '4:00 PM', '8:00 PM'],
+    datasets: [{
+      label: 'Time',
+      data: [56, 62, 70, 80, 82, 78],
+      borderWidth: 1,
+      barPercentage: 1.0,
+      categoryPercentage: 1.0
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Temperature (Fahrenheit)'
+        }
+      }
+    }
+  }
+})
+
+new Chart(histogram, {
+  type: 'bar',
+  data: {
+    labels: ['68–70', '71–73', '74–76', '77–79', '80–82'],
+    datasets: [{
+      label: 'Scores',
+      data: [3, 4, 6, 2, 1],
+      borderWidth: 1,
+      barPercentage: 1.0,
+      categoryPercentage: 1.0
+    }]
+  },
+  options: {
+    scales: {
+      x: {
+        offset: false
+      },
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Frequency'
+        }
+      }
+    }
+  }
+})
+
+new Chart(uniformDotPlot, {
+  type: 'scatter',
+  data: {
+    datasets: [{
+      data: [{
+        x: 1,
+        y: 1
+      }, {
+        x: 1,
+        y: 2
+      }, {
+        x: 1,
+        y: 3
+      }, {
+        x: 2,
+        y: 1
+      }, {
+        x: 2,
+        y: 2
+      }, {
+        x: 2,
+        y: 3
+      }, {
+        x: 2,
+        y: 4
+      }, {
+        x: 3,
+        y: 1
+      }, {
+        x: 3,
+        y: 2
+      }, {
+        x: 4,
+        y: 1
+      }, {
+        x: 4,
+        y: 2
+      }, {
+        x: 4,
+        y: 3
+      }, {
+        x: 5,
+        y: 1
+      }, {
+        x: 5,
+        y: 2
+      }, {
+        x: 5,
+        y: 3
+      }, {
+        x: 6,
+        y: 1
+      }, {
+        x: 6,
+        y: 2
+      }, {
+        x: 6,
+        y: 3
+      }],
+      backgroundColor: 'rgb(255, 99, 132)'
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      x: {
+        type: 'linear',
+        position: 'bottom'
+      }
+    }
+  }
+})
+
+new Chart(symmetricDotPlot, {
+  type: 'scatter',
+  data: {
+    datasets: [{
+      data: [{
+        x: 1,
+        y: 1
+      }, {
+        x: 2,
+        y: 1
+      }, {
+        x: 2,
+        y: 2
+      }, {
+        x: 2,
+        y: 3
+      }, {
+        x: 3,
+        y: 1
+      }, {
+        x: 3,
+        y: 2
+      }, {
+        x: 3,
+        y: 3
+      }, {
+        x: 3,
+        y: 4
+      }, {
+        x: 4,
+        y: 1
+      }, {
+        x: 4,
+        y: 2
+      }, {
+        x: 4,
+        y: 3
+      }, {
+        x: 4,
+        y: 4
+      }, {
+        x: 5,
+        y: 1
+      }, {
+        x: 5,
+        y: 2
+      }, {
+        x: 5,
+        y: 3
+      }, {
+        x: 6,
+        y: 1
+      }],
+      backgroundColor: 'rgb(255, 99, 132)'
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      x: {
+        type: 'linear',
+        position: 'bottom'
+      }
+    }
+  }
+})
+
+new Chart(skewedDotPlot, {
+  type: 'scatter',
+  data: {
+    datasets: [{
+      data: [{
+        x: 1,
+        y: 1
+      }, {
+        x: 2,
+        y: 1
+      }, {
+        x: 3,
+        y: 1
+      }, {
+        x: 3,
+        y: 2
+      }, {
+        x: 4,
+        y: 1
+      }, {
+        x: 4,
+        y: 2
+      }, {
+        x: 4,
+        y: 3
+      }, {
+        x: 5,
+        y: 1
+      }, {
+        x: 5,
+        y: 2
+      }, {
+        x: 5,
+        y: 3
+      }, {
+        x: 5,
+        y: 4
+      }, {
+        x: 6,
+        y: 1
+      }, {
+        x: 6,
+        y: 2
+      }, {
+        x: 6,
+        y: 3
+      }, {
+        x: 6,
+        y: 4
+      }],
+      backgroundColor: 'rgb(255, 99, 132)'
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      x: {
+        type: 'linear',
+        position: 'bottom'
+      }
+    }
+  }
+})
+
+</script>
+</section>
+	</main>
+	<footer class="row">
+		<p id="credit">&copy; <span id="credit-year"></span> <a href="/">Aristo Rinjuang</a> &middot; Made with <a href="https://lesstruct.dev" target="_blank" rel="noopener noreferrer">Lesstruct</a> <span aria-hidden="true">&#10084;&#65039;</span></p>
+		<script>document.getElementById('credit-year').textContent = new Date().getFullYear();</script>
+	</footer>
+	<script>(function(w,d, s, id) {if(typeof(w.webpushr)!=='undefined') return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js, fjs = d.getElementsByTagName(s)[0];js = d.createElement(s); js.id = id;js.async=1;js.src = "https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window,document, 'script', 'webpushr-jssdk'));webpushr('setup',{'key':'BOtXlhFRxStvlCGW_G3nDVaf4311GVaKSQWpqD0_wTFazP93WyDm68VDxLGLobBxUz-AZonBHxCzP9_mcK6GBxo' });</script>
+	<script src="/static/js/semantic-tabs.min.js"></script>
+	<script>
+	SemanticTabs();
+	SemanticTabs('semantic-tabs-2', 'semantic-tabs-component', 'semantic-tabs-element', 'h4');
+	</script>
+</body>
+</html>

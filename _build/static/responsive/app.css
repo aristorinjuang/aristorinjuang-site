@@ -1,0 +1,96 @@
+nav button {
+  background: #333;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+nav ul {
+  background: #333;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav > ul {
+  display: flex;
+}
+
+nav li {
+  position: relative;
+}
+
+nav li > ul {
+  display: none;
+  position: absolute;
+}
+
+nav li > ul ul {
+  left: 100%;
+  top: 0;
+}
+
+nav a {
+  color: #fff;
+  display: block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+nav button:hover,
+nav li:hover > a {
+  background: #eee;
+  color: #333;
+}
+
+nav li:hover > ul {
+  display: block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  nav a {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  nav button {
+    display: block;
+  }
+
+  nav > ul {
+    display: none;
+  }
+
+  nav > ul.active {
+    display: block;
+  }
+
+  nav li > ul {
+    display: block;
+    padding-left: 10px;
+    position: static;
+  }
+}

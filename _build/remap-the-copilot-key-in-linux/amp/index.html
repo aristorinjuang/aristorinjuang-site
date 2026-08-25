@@ -1,0 +1,581 @@
+<!DOCTYPE html><html lang="en" amp=""><head>
+  <link rel="canonical" href="https://aristorinjuang.com/remap-the-copilot-key-in-linux/"><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/><meta name="description" content="Remap the Microsoft Copilot key in Linux with Ollama, DeepSeek-R1, and NeuralChat."/><meta property="og:title" content="Remap the Copilot Key in Linux"/><meta property="og:description" content="Remap the Microsoft Copilot key in Linux with Ollama, DeepSeek-R1, and NeuralChat."/><meta property="og:image" content="https://aristorinjuang.com/uploads/media/93ad14b469ddd9fc.webp"/><meta property="og:type" content="website"/><meta property="og:site_name" content="Aristo Rinjuang"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://aristorinjuang.com/uploads/media/93ad14b469ddd9fc.webp"/><meta property="article:author" content="Aristo Rinjuang"/><meta name="author" content="Aristo Rinjuang"/><meta name="robots" content="index, follow"/><meta name="msapplication-config" content="/static/images/icons/browserconfig.xml"/><meta name="theme-color" content="#ffffff"/><style amp-custom="">@import 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap';:root{--color-bg:#ffffff;--color-text:#1a1a2e;--color-text-muted:#6b7280;--color-primary:#22d3ee;--color-primary-hover:#06b6d4;--color-secondary:#2563eb;--color-accent:#8b5cf6;--color-border:#e5e7eb;--color-card-bg:#f9fafb;--color-danger:#dc2626;--color-success:#16a34a;--max-width:1200px;--content-width:768px;--header-height:80px;--radius-sm:4px;--radius-md:6px;--radius-lg:8px;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 16px rgba(0,0,0,0.10);--shadow-lg:0 8px 24px rgba(0,0,0,0.12);--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.5rem;--space-6:2rem;--space-8:3rem;--transition-fast:0.2s ease;--ring:0 0 0 3px color-mix(in srgb,var(--color-primary) 22%,transparent);--font-sans:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--font-mono:"JetBrains Mono","Fira Code","Cascadia Code",monospace}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-sans);line-height:1.6;color:var(--color-text);background-color:var(--color-bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover);text-decoration:underline}::selection{background:color-mix(in srgb,var(--color-primary) 25%,transparent);color:var(--color-text)}:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}.content-body{font-size:1.0625rem;line-height:1.8}.content-body h1,.content-body h2,.content-body h3,.content-body h4,.content-body h5,.content-body h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.3;scroll-margin-top:calc(var(--header-height) + 1rem)}.content-body h1{font-size:1.75rem}.content-body h2{font-size:1.5rem}.content-body h3{font-size:1.25rem}.content-body h4{font-size:1.125rem}.content-body h5{font-size:1rem}.content-body h6{font-size:.875rem;color:var(--color-text-muted)}.content-body p{margin-bottom:1.25em}.content-body ul,.content-body ol{margin-bottom:1.25em;padding-left:1.5em}.content-body li{margin-bottom:.25em}.content-body blockquote{margin:1.25em auto;padding:.25em 1em;color:var(--color-text-muted);font-style:italic;background:var(--color-card-bg);border-left:3px solid var(--color-primary);border-radius:0 var(--radius-md)var(--radius-md)0}.content-body pre{margin:1.25em auto;overflow-x:auto;border-radius:var(--radius-lg)}.content-body code{font-family:var(--font-mono);font-size:.9em}.content-body:not(pre)>code{padding:.15em .4em;background:var(--color-card-bg);border:1px solid var(--color-border);border-radius:var(--radius-sm)}.content-body figure{margin:1.25em 0;text-align:center}.content-body figure img{display:block;max-width:100%;height:auto;margin:0 auto}.content-body .table-wrapper{max-width:100%;margin:1.25em 0;overflow-x:auto}.content-body table{width:100%;border-collapse:collapse;margin:0}.content-body th,.content-body td{padding:var(--space-2)var(--space-3);text-align:left;border:1px solid var(--color-border)}.content-body th{font-weight:600;background:var(--color-card-bg)}.content-body tbody tr:nth-child(even){background:color-mix(in srgb,var(--color-card-bg) 50%,var(--color-bg))}.content-body hr{border:none;border-top:1px solid var(--color-border);margin:2em auto}.content-body .embed-wrapper{position:relative;height:0;padding-bottom:56.25%;margin:1.25em 0;overflow:hidden}.content-body .embed-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}.content-body .math-block{text-align:center;margin:1.25em 0;overflow-x:auto}html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height) + .5rem)}body{min-height:100vh;display:flex;flex-direction:column}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}.container{max-width:var(--max-width);margin:0 auto;padding:0 var(--space-5);width:100%}main{flex:1}.btn{display:inline-block;padding:var(--space-3)var(--space-5);font-family:inherit;font-size:1rem;font-weight:600;line-height:1.5;color:var(--color-text);background:var(--color-primary);border:none;border-radius:var(--radius-md);cursor:pointer;transition:background var(--transition-fast),transform var(--transition-fast)}.btn:hover{background:var(--color-primary-hover);text-decoration:none}.btn:active{transform:translateY(1px)}.form-control{display:block;width:100%;padding:var(--space-3);margin-bottom:var(--space-4);font-family:inherit;font-size:1rem;line-height:1.5;color:var(--color-text);background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);transition:border-color var(--transition-fast),box-shadow var(--transition-fast)}textarea.form-control{resize:vertical}.form-control:focus,.form-control:focus-visible{outline:none;border-color:var(--color-primary);box-shadow:var(--ring)}.alert{margin-bottom:var(--space-4);padding:var(--space-3);font-size:.875rem;border-radius:var(--radius-md)}.alert--error{color:var(--color-danger);background:color-mix(in srgb,var(--color-danger) 8%,var(--color-bg));border-left:3px solid var(--color-danger)}.alert--success{color:var(--color-success);background:color-mix(in srgb,var(--color-success) 8%,var(--color-bg))}.site-header{border-bottom:2px solid var(--color-primary);background:linear-gradient( to right,var(--color-bg),color-mix(in srgb,var(--color-secondary) 3%,var(--color-bg)) );margin-bottom:var(--space-5);padding:var(--space-4)0;position:sticky;top:0;z-index:10}.site-header .container{display:flex;justify-content:space-between;align-items:center}.site-logo{font-size:clamp(1.15rem,1rem + .5vw,1.35rem);font-weight:700;color:var(--color-secondary);letter-spacing:-.02em;flex-shrink:0}.site-logo:hover{text-decoration:none;color:var(--color-primary)}.nav-wrapper{position:relative;display:flex;align-items:center;gap:var(--space-2);flex:1;min-width:0;margin-left:var(--space-4)}.nav-wrapper::before,.nav-wrapper::after{content:'';position:relative;flex-shrink:0;width:20px;pointer-events:none;z-index:1}.nav-wrapper::after{background:linear-gradient(to right,transparent,var(--color-bg))}.nav-wrapper::before{background:linear-gradient(to left,transparent,var(--color-bg))}.site-nav{display:flex;gap:var(--space-5);margin-left:var(--space-4);overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}.site-nav::-webkit-scrollbar{display:none}.site-nav a{color:var(--color-text-muted);font-size:.9rem;white-space:nowrap;flex-shrink:0;transition:color var(--transition-fast)}.site-nav a:hover{color:var(--color-primary);text-decoration:none}.site-nav a.active{color:var(--color-secondary);font-weight:600}.nav-toggle{display:none;flex-shrink:0;width:36px;height:36px;padding:0;border:none;background:0 0;cursor:pointer;position:relative;z-index:11}.nav-toggle span{display:block;width:22px;height:2px;background:var(--color-text);border-radius:var(--radius-sm);transition:transform var(--transition-fast),opacity var(--transition-fast);position:absolute;left:7px}.nav-toggle span:nth-child(1){top:9px}.nav-toggle span:nth-child(2){top:17px}.nav-toggle span:nth-child(3){top:17px}.nav-toggle span:nth-child(4){top:25px}.nav-toggle[aria-expanded=true] span:nth-child(1),.nav-toggle[aria-expanded=true] span:nth-child(4){opacity:0}.nav-toggle[aria-expanded=true] span:nth-child(2){transform:rotate(45deg)}.nav-toggle[aria-expanded=true] span:nth-child(3){transform:rotate(-45deg)}.site-search{position:relative;display:flex;align-items:center}.search-toggle{display:none;flex-shrink:0;width:44px;height:44px;padding:0;border:none;background:0 0;cursor:pointer;color:var(--color-text-muted);border-radius:var(--radius-md);transition:color var(--transition-fast)}.search-toggle:hover{color:var(--color-primary)}.search-box{position:relative;display:flex;align-items:center}.search-input{width:200px;padding:var(--space-2).7rem;border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:.875rem;font-family:inherit;color:var(--color-text);background:var(--color-bg);min-width:0;transition:border-color var(--transition-fast),box-shadow var(--transition-fast)}.search-input::placeholder{color:var(--color-text-muted)}.search-input:focus,.search-input:focus-visible{outline:none;border-color:var(--color-primary);box-shadow:var(--ring)}.search-box--open .search-input{width:240px}.search-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;min-width:280px;max-width:360px;max-height:320px;overflow-y:auto;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);z-index:20}.search-dropdown__item{display:block;padding:var(--space-3).8rem;color:var(--color-text);text-decoration:none;border-bottom:1px solid var(--color-border);transition:background .15s ease}.search-dropdown__item:last-child{border-bottom:none}.search-dropdown__item:hover{background:var(--color-card-bg);text-decoration:none}.search-dropdown__title{font-size:.875rem;font-weight:600;line-height:1.3;margin-bottom:.15rem}.search-dropdown__desc{font-size:.8rem;color:var(--color-text-muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.search-dropdown__empty{padding:var(--space-3).8rem;color:var(--color-text-muted);font-size:.875rem}.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--space-5)}.post-card{background:var(--color-card-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:transform var(--transition-fast),box-shadow var(--transition-fast),border-color var(--transition-fast)}.post-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-md)}@media(prefers-reduced-motion:no-preference){.post-card:hover{transform:translateY(-2px)}}.post-card a{display:block;padding:var(--space-5);color:var(--color-text)}.post-card a:hover{text-decoration:none}.post-card h2{font-size:1.25rem;line-height:1.3;margin-bottom:var(--space-2)}.post-card p{font-size:.9rem;color:var(--color-text-muted);margin-bottom:var(--space-2)}.post-card time{font-size:.8rem;color:var(--color-text-muted)}.post-card .author{margin-left:var(--space-2);font-size:.8rem;color:var(--color-text-muted)}.post-card__image{width:calc(100% + 3rem);margin:calc(-1 * var(--space-5))calc(-1 * var(--space-5))var(--space-2);aspect-ratio:16/10;object-fit:cover}.home-section{margin-top:var(--space-8)}.home-section__header{margin-bottom:var(--space-4)}.home-section__header h2{font-size:1.5rem}.home-section__desc{margin-top:var(--space-1);font-size:.9rem;color:var(--color-text-muted)}.pagination{display:flex;justify-content:center;gap:var(--space-4);margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border)}.pagination a{padding:var(--space-2)var(--space-4);border:1px solid var(--color-border);border-radius:var(--radius-md);color:var(--color-primary);text-decoration:none;transition:background var(--transition-fast),border-color var(--transition-fast)}.pagination a:hover{background:var(--color-card-bg);border-color:var(--color-primary)}.content-wrapper{max-width:var(--content-width);margin-left:auto;margin-right:auto}.content-article h1{font-size:clamp(1.5rem,1.2rem + 1.5vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:var(--space-3)}.content-languages,.content-meta{display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-4);color:var(--color-text-muted);font-size:.9rem}.content-tags{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-5)}.tag{padding:.2rem .6rem;font-size:.8rem;color:var(--color-text-muted);background:color-mix(in srgb,var(--color-accent) 8%,var(--color-bg));border:1px solid color-mix(in srgb,var(--color-accent) 25%,var(--color-border));border-radius:var(--radius-sm);transition:background var(--transition-fast),color var(--transition-fast)}.tag:hover{text-decoration:none;color:var(--color-accent);background:color-mix(in srgb,var(--color-accent) 16%,var(--color-bg))}.lang-link{padding:.2rem .6rem;font-size:.8rem;color:var(--color-text-muted);background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-sm);transition:background var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast)}.lang-link:hover{text-decoration:none;color:var(--color-secondary);background:var(--color-card-bg);border-color:color-mix(in srgb,var(--color-secondary) 25%,var(--color-border))}.lang-link--active,.lang-link--active:hover{color:var(--color-bg);background:var(--color-secondary);border-color:var(--color-secondary);font-weight:600}.custom-fields{margin-top:var(--space-6);padding-top:var(--space-5);border-top:2px solid color-mix(in srgb,var(--color-secondary) 15%,var(--color-border))}.custom-fields-list{display:grid;gap:0;background:var(--color-card-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}.custom-fields-list dt{font-weight:600;color:var(--color-text)}.custom-fields-list dd{color:var(--color-text-muted);border-bottom:1px solid var(--color-border)}.custom-fields-list dd:last-of-type{border-bottom:none}.custom-fields-list dt,.custom-fields-list dd{padding:var(--space-3)var(--space-4)}.comments-section{margin-top:var(--space-6);padding-top:var(--space-6);border-top:2px solid color-mix(in srgb,var(--color-secondary) 15%,var(--color-border))}.comments-section h2{margin-bottom:var(--space-4)}.related-posts{margin-top:var(--space-6);padding-top:var(--space-6);border-top:2px solid color-mix(in srgb,var(--color-secondary) 15%,var(--color-border))}.related-posts h2{margin-bottom:var(--space-4)}.comment-item{padding:var(--space-4)0;border-bottom:1px solid var(--color-border)}.comment-item:last-child{border-bottom:none}.comment-header{margin-bottom:var(--space-2)}.comment-author{font-weight:600;color:var(--color-secondary)}.comment-date{margin-left:var(--space-2);font-size:.875rem;color:var(--color-text-muted)}.comment-text{line-height:1.6}.comment-empty{margin-bottom:1.25em;font-style:italic;color:var(--color-text-muted)}.comment-login{margin:var(--space-4)0}.comment-login a{color:var(--color-primary)}.comment-form .btn{margin-bottom:var(--space-4)}.auth-page{max-width:480px;margin:var(--space-6)auto;padding:0 var(--space-4)}.auth-page h1{margin-bottom:var(--space-5);color:var(--color-secondary)}.auth-form label{display:block;margin-bottom:var(--space-1);font-weight:600;color:var(--color-text)}.auth-form .btn{width:100%}.auth-links{margin-top:var(--space-4);text-align:center}.auth-links a{color:var(--color-primary)}.auth-success{text-align:center}.author-page h1,.tag-page h1{margin-bottom:var(--space-5)}.author-avatar{width:32px;height:32px;margin-right:var(--space-1);border-radius:50%;object-fit:cover;vertical-align:middle}.author-page-avatar{width:96px;height:96px;margin-bottom:var(--space-4);border-radius:50%;object-fit:cover}.back-link{display:inline-block;font-size:.9rem;color:var(--color-primary);transition:color var(--transition-fast)}.back-link:hover{color:var(--color-primary-hover)}.not-found{padding:var(--space-8)0;text-align:center}.not-found h1{font-size:clamp(3rem,2rem + 5vw,4rem);line-height:1.1;color:var(--color-secondary)}.not-found p{margin:var(--space-4)0 var(--space-6);font-size:1.25rem;color:var(--color-text-muted)}.empty{padding:var(--space-6)0;font-size:1.1rem;color:var(--color-text-muted)}.site-footer{margin-top:var(--space-5);padding:var(--space-6)0;text-align:center;color:var(--color-text-muted);font-size:.85rem;background:var(--color-card-bg);border-top:2px solid color-mix(in srgb,var(--color-secondary) 15%,var(--color-border))}@media(max-width:768px){.content-wrapper{margin-left:var(--space-5);margin-right:var(--space-5)}}@media(min-width:768px){.custom-fields-list{grid-template-columns:auto 1fr}.custom-fields-list dt{border-bottom:1px solid var(--color-border)}.custom-fields-list dt:last-of-type{border-bottom:none}.custom-fields-list dd{border-left:1px solid var(--color-border)}}@media(max-width:640px){.site-header .container{flex-wrap:nowrap}.nav-wrapper{position:static;flex:none;margin-left:auto}.nav-wrapper::before,.nav-wrapper::after{display:none}.nav-toggle{display:block}.search-toggle{display:flex;align-items:center;justify-content:center}.search-box{display:none;position:absolute;top:100%;right:0;min-width:44px;min-height:44px}.search-box--open{display:block}.search-input{width:calc(100vw - 3rem);min-width:44px;min-height:44px;font-size:1rem}.search-dropdown{min-width:calc(100vw - 3rem);max-width:calc(100vw - 3rem)}.site-nav{display:none;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;max-height:60vh;padding:var(--space-1)0;overflow-y:auto;background:var(--color-bg);border-top:1px solid var(--color-border);box-shadow:var(--shadow-lg);z-index:10}.site-nav.nav-open{display:flex}.site-nav a{padding:var(--space-3)var(--space-5);font-size:.95rem}.site-nav a:not(:last-child){border-bottom:1px solid var(--color-border)}.posts-grid{grid-template-columns:1fr}}.highlight{margin:var(--space-5)0}.highlight .chroma{background:#0d1117;color:#e6edf3;overflow-x:auto;border-radius:var(--radius-md)}.highlight pre.chroma{margin:0;padding:var(--space-4);font-family:ui-monospace,SFMono-Regular,sf mono,Menlo,Consolas,monospace;font-size:.875rem;line-height:1.6}.highlight table.lntable{width:100%;border-spacing:0;border-collapse:collapse}.highlight td.lntd{vertical-align:top;padding:0}.highlight td.lntd:last-child{width:100%}.highlight .lnt,.highlight .ln{color:#6e7681;white-space:pre;user-select:none}.highlight .x{color:#f85149}.highlight .err{color:#f85149}.highlight .k,.highlight .kc,.highlight .kd,.highlight .kn,.highlight .kp,.highlight .kr,.highlight .kt,.highlight .o,.highlight .ow{color:#ff7b72}.highlight .s,.highlight .sa,.highlight .sb,.highlight .sc,.highlight .dl,.highlight .s2,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx,.highlight .sr,.highlight .s1,.highlight .ss{color:#a5d6ff}.highlight .m,.highlight .mb,.highlight .mf,.highlight .mh,.highlight .mi,.highlight .il,.highlight .mo{color:#79c0ff}.highlight .na,.highlight .nb,.highlight .no,.highlight .nf,.highlight .fm,.highlight .bn{color:#79c0ff}.highlight .nc,.highlight .ne,.highlight .nl,.highlight .nt,.highlight .nd,.highlight .ni,.highlight .nn,.highlight .nx,.highlight .py{color:#ffa657}.highlight .c,.highlight .ch,.highlight .cm,.highlight .cp,.highlight .cpf,.highlight .c1,.highlight .cs,.highlight .sd{color:#8b949e}.highlight .gd{color:#ffa198;background-color:#67060c}.highlight .gi{color:#56d364;background-color:#0c5325}.highlight .w{color:#8b949e}</style><style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><script async="" src="https://cdn.ampproject.org/v0.js"></script></head>
+<body>
+	<header>
+		<ul id="social" class="plain row">
+			<li class="email">
+				<a href="mailto:contact@aristorinjuang.com" title="Email">
+					<span class="screen-reader-text">Email</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+				</a>
+			</li>
+			<li class="github">
+				<a href="https://github.com/aristorinjuang" rel="noopener noreferrer" target="_blank" title="GitHub">
+					<span class="screen-reader-text">GitHub</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+				</a>
+			</li>
+			<li class="linkedin">
+				<a href="https://www.linkedin.com/in/aristorinjuang" rel="noopener noreferrer" target="_blank" title="LinkedIn">
+					<span class="screen-reader-text">LinkedIn</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+				</a>
+			</li>
+		</ul>
+	</header>
+	<main>
+<section id="page" class="content">
+	<h1>Remap the Copilot Key in Linux</h1>
+	<p id="article-date"><time datetime="2025-03-15T00:00:00Z">March 15, 2025</time></p>
+
+	<figure>
+  <amp-img src="/uploads/media/93ad14b469ddd9fc.webp" alt="the Copilot button"></amp-img>
+  <figcaption>the Copilot button</figcaption>
+</figure>
+<p>Nowadays, laptops have a Copilot key on their keyboards. Most laptops replace the right Ctrl key with the Copilot key. However, on most ThinkPads, Copilot has a dedicated key (not a replacement for the right Ctrl key).</p>
+<p>But that key is useless for Linux users because most Linux distros don&#39;t have the Copilot service. Most Linux users replace it with the right Ctrl button. How about if you already have a dedicated right Ctrl button? Can we replace the Copilot button with something similar to a Copilot service? Yes, you can. It keeps your data more secure (your data is yours) and is free (because using your local resources).</p>
+<p>Some Windows users even hate the Copilot feature. The Copilot application sends user&#39;s prompts to Microsoft Copilot servers. They claimed that the data would be saved and not for training. Uhm, that&#39;s okay if you trust it. It doesn&#39;t use your local resources because it is processed on the servers.</p>
+<p>We are going to run these easy steps:</p>
+<ol>
+  <li>Installing the NPU driver</li>
+  <li>Checking the NPU and GPU usage</li>
+  <li>Installing Ollama</li>
+  <li>Installing Open WebUI</li>
+  <li>Installing DeepSeek-R1 and NeuralChat</li>
+  <li>Applying it to the Copilot key</li>
+</ol>
+<p>I ran these steps on an Intel machine. Maybe later I can try it on an AMD machine and share my experience with you.</p>
+<h2>Installing the NPU driver</h2>
+<p>Nowadays, laptops have NPU (Neural Processing Unit), a dedicated chip or processor for AI. Starting from Apple Silicon, Intel Core Ultra Gen 1, and AMD Ryzen AI. It can process AI locally without sending requests or prompts to the server. So, laptops can run AI or small models easily locally.</p>
+<p>Linux, especially for Intel, the chip I&#39;m using, doesn&#39;t come with NPU drivers. So, we need to install them ourselves. You can follow the steps from <a href="https://github.com/intel/linux-npu-driver/releases" rel="noopener noreferrer" target="_blank">https://github.com/intel/linux-npu-driver/releases</a>.</p>
+<p>Next, we are going to install <a href="https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/download.html?PACKAGE=OPENVINO_BASE&amp;VERSION=v_2025_0_0&amp;OP_SYSTEM=LINUX&amp;DISTRIBUTION=PIP" rel="noopener noreferrer" target="_blank">OpenVINO</a>. We want to see that the NPU driver is installed.
+</p><ol>
+  <li><code>python3 -m venv openvino_env</code></li>
+  <li><code>source openvino_env/bin/activate</code></li>
+  <li><code>python -m pip install --upgrade pip</code></li>
+  <li><code>pip install openvino==2025.0.0</code></li>
+  <li><code>benchmark_app -h</code></li>
+</ol>
+<p>Make sure that this message does exist on yours too, <code>Available target devices:   CPU  GPU  NPU</code>.</p>
+<h2>Checking the NPU and GPU usage</h2>
+<p><code>sudo intel_gpu_top</code> to check the NPU and GPU usage in Linux. Install <code>intel-gpu-tools</code> if you didn&#39;t have it.</p>
+<h2>Installing Ollama</h2>
+<p>Installing Ollama is dead simple, <code>curl -fsSL https://ollama.com/install.sh | sh</code>.</p>
+<p>Now, let&#39;s check <code>sudo systemctl status ollama.service</code>. Make sure it is <strong>active (running)</strong> and <strong>enabled</strong>.</p>
+<ol>
+  <li><code>sudo systemctl start ollama.service</code></li>
+  <li><code>sudo systemctl enable ollama.service</code></li>
+</ol>
+<h2>Installing Open WebUI</h2>
+<p><a href="https://github.com/open-webui/open-webui" rel="noopener noreferrer" target="_blank">Open WebUI</a> is a great UI for Ollama. I think it&#39;s the only UI you need for Ollama. It is the same UI as ChatGPT&#39;s UI.</p>
+<p>I think we should install it via Docker because we want to make it always run on our local machine.</p>
+<pre>docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 -e PORT=48080 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+</pre>
+<p>We set <code>OLLAMA_BASE_URL</code> to our local Ollama without SSL and the default <code>PORT</code> to whatever port we want. That port will be reserved because the app will be always running.</p>
+<p>Keep the script below to make Open WebUI always updated. Remember to run it when the Open WebUI is running.</p>
+<pre>docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once open-webui
+</pre>
+<h2>Installing DeepSeek-R1 and NeuralChat</h2>
+<p>DeepSeek-R1 is a trend today. The cool thing is the model is open source under the MIT License, <a href="https://huggingface.co/deepseek-ai" rel="noopener noreferrer" target="_blank">https://huggingface.co/deepseek-ai</a>. That&#39;s why we can run it on our local machine and maybe deploy it by ourselves. Run <code>ollama pull deepseek-r1:7b</code> to download it. I think <code>7b</code> or 7 billion parameters is enough for our local machine.</p>
+<p>What is the answer to «please create a fibonacci script in Go»? The <code>deepseek-r1:7b</code> consumed 50% (11 cores) of my CPU and 0% of my GPU and NPU.</p>
+<pre>total duration:       9m34.481696466s
+load duration:        11.18195ms
+prompt eval count:    10 token(s)
+prompt eval duration: 575ms
+prompt eval rate:     17.39 tokens/s
+eval count:           3456 token(s)
+eval duration:        9m33.893s
+eval rate:            6.02 tokens/s
+</pre>
+<p>Here is the full response of <code>deepseek-r1:7b</code>.</p>
+<pre>&lt;think&gt;
+Okay, I need to create a Fibonacci sequence generator in Go. Let me think about how to approach this.
+
+First, I know the Fibonacci sequence starts with 0 and 1, right? Each subsequent number is the sum of the two preceding ones. So the sequence goes 0, 1, 1, 2, 3, 5, etc.
+
+The user wants a script that can generate up to a specified number of terms. I should prompt the user for how many terms they want. That means I&#39;ll need an interactive part where the user can input their desired count.
+
+In Go, handling user input is straightforward using the os and io packages. I&#39;ll use fmt.Scanln() to read a line from standard input. But since the input might be a string with non-numeric characters, I should convert it using strconv.Atoi(). If there&#39;s an error converting, I&#39;ll print an error message.
+
+Once I have the number of terms as an integer (let&#39;s call it n), I can start generating the sequence. I&#39;ll use slices to store the Fibonacci numbers because they allow easy appending and efficient memory usage, especially for large sequences.
+
+I&#39;ll initialize a slice with the first two numbers: 0 and 1. But wait, if the user wants only one term or zero terms, I should handle those cases too. So before generating, I&#39;ll check:
+
+- If n is less than 1, maybe just return an empty slice.                                                                                                                              
+- If n is 1, return [0].                                                                                                                                                                - Else, proceed as normal.
+
+Then, for each subsequent term beyond the first two, I&#39;ll append the sum of the last two elements in the slice. I&#39;ll loop from index 2 up to n-1 (since slices are zero-based) and do that.
+
+After generating the sequence, I&#39;ll print it out neatly using fmt.Println(). If there were no terms generated (like when n was less than 1), maybe just print an empty message or a message indicating an invalid input.
+
+I should also test this with some examples. Like if the user enters 5, the output should be [0, 1, 1, 2, 3]. If they enter 0 or a negative number, I&#39;ll handle that gracefully.
+
+Wait, what about the initial case when n is 1? The slice starts with two elements, but we only need one. So perhaps after initializing, if n is less than the length of the slice, return the first n elements. Or maybe adjust the loop to run up to min(n-1, len(current slice) - 1). Hmm.
+
+Alternatively, I can start with an empty slice and build it up step by step until I have n terms. That might be more efficient, especially for larger n. Let me think: initialize a slice with the first term if n &gt;=1, then add each next term as the sum of the previous two, appending each time.
+
+But initializing with 0 and 1 takes care of the first two terms. So perhaps it&#39;s better to start with that and handle cases where n is less than or equal to 2 separately.
+
+Wait, no. Let me outline the steps:
+
+1. Read user input as integer n.
+2. If n &lt;= 0: print error and exit.
+3. Initialize fibs := make([]int, max(n, 2)) and fill it with 0 and 1 up to min(2, n). Wait, no.
+
+Wait, maybe a better approach is:
+
+Initialize the slice as empty.
+
+If n &gt;= 1:
+   add 0
+if n &gt;= 2:
+   add 1
+
+Then, for each i from 2 to (n-1):
+   fibs = append(fibs, fibs[i-1] + fibs[i-2])
+
+This way, it handles all cases:
+
+- If n is 0: return empty slice.
+- n=1: [0]
+- n=2: [0,1]
+- n&gt;2: build up the rest.
+
+Yes, that seems efficient and covers all edge cases without multiple conditional checks after generation.
+
+So in code:
+
+fibs := make([]int, 0)
+
+if n &gt;= 1 {
+   fibs = append(fibs, 0)
+}
+if n &gt;= 2 {
+   fibs = append(fibs, 1)
+}
+
+for i := 2; i &lt; len(fibs); i++ { // Wait, no. Wait, initial length is either 1 or 2.
+
+Wait, after the first two ifs:
+
+If n=3: initially [0,1], then loop from 2 to less than 2? No, because if n &gt;=2, we have at least 2 elements. So for i starting at 2 up to (n-1), append fibs[i] = sum of previous two.
+
+Wait, no, the loop should run until len(fibs) reaches n terms. Because initially, it&#39;s either length 1 or 2. For example:
+
+Case n=3: initial len is 2. So we need to add one more term (i from 2 up to 2-1? Wait, perhaps a better way is to loop until the slice has less than n elements.
+
+Alternatively, since in each step, we can calculate the next term as sum of last two and append it until we have n terms.
+
+So after initializing fibs:
+
+for i := len(fibs); i &lt; n; i++ {
+   next = fibs[i-1] + fibs[i-2]
+   fibs = append(fibs, next)
+}
+
+Wait, that would work because for each step beyond the initial length, we add one element.
+
+Testing with n=3:
+
+Initial fibs is [0, 1], len=2. i starts at 2 (since len &lt; 3). So in loop:
+
+i=2: less than 3? yes.
+next = 1 + 0? Wait no, because for the third term, it&#39;s 0+1=1.
+
+Yes, correct.
+
+Then append next, so fibs becomes [0,1,1], which is length 3. Then loop ends since i increments to 3, which is not less than n (3).
+
+Wait, initial len(fibs) after the ifs: if n&gt;=2, it&#39;s 2; else, for n=1, len is 1.
+
+So in code:
+
+fibs = make([]int, 0)
+
+if n &gt;= 1 {
+   fibs = append(fibs, 0)
+}
+
+if n &gt;= 2 {
+   fibs = append(fibs, 1)
+}
+
+for i := len(fibs); i &lt; n; i++ {
+   next = fibs[i-1] + fibs[i-2]
+   fibs = append(fibs, next)
+}
+
+Yes, that should work.
+
+Now, let&#39;s code this:
+
+Read n using fmt.Scanln(). Then convert to integer. Handle possible errors? Probably not necessary if the user enters a valid number, but in practice, we could add error handling for 
+non-integer inputs.
+
+But for simplicity, perhaps just read and convert as follows:
+
+n, err := strconv.Atoi(input)
+
+if err != nil {
+   print(&#34;Error reading input&#34;)
+   exit
+}
+
+Then check n &gt;=1. If not, handle accordingly.
+
+Wait, but in the code above, if n is 0 or negative, fibs remains empty because we don&#39;t add anything. Then when printing, it would output an empty slice.
+
+So perhaps after initializing, I should immediately return early if necessary.
+
+Putting all together:
+
+Read input as integer n.
+
+If n &lt;=0: print &#34;Invalid number of terms&#34; and exit.
+
+Else:
+
+Initialize the slice as above.
+
+Then loop to fill up to n terms.
+
+Print the slice.
+
+Testing this logic with various inputs:
+
+Test 1: Input 5
+
+Output should be [0,1,1,2,3]
+
+Yes.
+
+Test 2: Input 0 or negative number. Output empty slice? Or error?
+
+Probably better to handle it by printing an error message and exit.
+
+So in code:
+
+n := ... (converted from input)
+
+if n &lt;=0 {
+   fmt.Println(&#34;Invalid number of terms&#34;)
+   os.Exit(1)
+}
+
+Else proceed as above.
+
+Wait, but looking back at the initial problem statement: the user should be able to enter a positive integer. So handling negative numbers and zero is appropriate by printing an error 
+message.
+
+So in code:
+
+n, err := strconv.Atoi(input)
+
+if n &lt;=0 || err != nil {
+   fmt.Println(&#34;Please enter a positive integer.&#34;)
+   os.Exit(1)
+}
+
+Then proceed to generate the sequence.
+
+Another edge case: n=1. The output should be [0].
+
+Yes
+
+Now, putting it all together in code.
+
+So the script will:
+
+- Read input as string.
+- Convert to integer using strconv.Atoi().
+- Check for non-positive integers or conversion errors; if so, print error and exit.
+- Else, initialize fibs with 0 and 1 (if n &gt;=2) or just 0 (if n=1).
+- Then loop from len(fibs) until it reaches n terms, each time appending the sum of last two elements.
+
+Wait, no. Wait, after initializing, if n is greater than len(fibs), we loop to add more elements.
+
+So in code:
+
+n := ... as integer
+
+fibs = make([]int, 0)
+
+if n &gt;=1 {
+   fibs = append(fibs, 0)
+}
+
+if n &gt;=2 {
+   fibs = append(fibs, 1)
+}
+
+for i := len(fibs); i &lt; n; i++ {
+   nextVal := fibs[i-1] + fibs[i-2]
+   fibs = append(fibs, nextVal)
+}
+
+Then print the slice.
+
+Yes.
+
+Now, code this in Go:
+                                                                                                                                                                                              
+So first import required packages: &#34;io&#34;, &#34;os&#34;, &#34;strconv&#34;.
+
+But since it&#39;s a script, we can do:
+
+package main
+
+import (
+        &#34;bufio&#34;
+        &#34;fmt&#34;
+        &#34;os&#34;
+        &#34;strconv&#34;
+)
+
+func main() {
+        var input strings.NewReader()
+        fmt.Print(&#34;Enter the number of terms: &#34;)
+        input.ReadString()
+
+        n, err := strconv.Atoi(input)
+        if n &lt;=0 || err != nil {
+                fmt.Println(&#34;Please enter a positive integer.&#34;)
+                os.Exit(1)
+        }
+
+        fibs := make([]int, 0)
+
+        if n &gt;=1 {
+                fibs = append(fibs, 0)
+        }
+
+        if n &gt;=2 {
+                fibs = append(fibs, 1)
+        }
+
+        for i := len(fibs); i &lt; n; i++ {
+                nextVal := fibs[i-1] + fibs[i-2]
+                fibs = append(fibs, nextVal)
+        }
+
+        fmt.Println(&#34;Fibonacci sequence:&#34;, fibs)
+}
+
+Wait, but in the loop for generating terms beyond initial 2.
+
+Testing with n=3:
+
+fibs starts as [0,1]. i is 2 (since len is 2 &lt;3). So enter loop: nextVal = 1 +0? Wait no, wait. The indices are i-1 and i-2.
+
+Wait for the third term (i=2 in this case), which is index 2:
+
+fibs[i-1] is fibs[1], which is 1.
+
+fibs[i-2] is fibs[0], which is 0.
+
+So nextVal = 1+0=1. Append to make [0,1,1].
+
+Yes, correct.
+
+Similarly for i=3 (if n was 4), but that&#39;s beyond the initial len of 3: in code, when n&gt;= len(fibs) (&gt;2?), then we add more terms.
+
+Wait no: len(fibs) after initialization is max(1, 2). Then loop runs from len to less than n. For example:
+
+If n=4:
+
+len(fibs)=2 initially? No: if n &gt;=2, it appends 1. So for n=3, len=2.
+
+Wait wait no:
+
+When n&gt;=1 and n &gt;=2 (for n&gt;=2), the initial fibs is [0], then becomes [0,1].
+
+So when you have to generate until i &lt;n.
+
+In code, i starts at len(fibs) which is 2 for n=3. So in loop: run once.
+
+Append nextVal: fibs[1] + fibs[0] = 1+0=1. Now len is 3.
+
+Then loop ends because i becomes 3 (since initial i was 2, incremented to 3 which is not &lt;n=3).
+
+Wait no:
+
+for i in the loop runs while i &lt;n: for n=3, after first iteration, i increments from 2 to 3. Then check if 3&lt;3? No.
+
+So correct.
+
+Another test case: n=5.
+
+Initial len is 2 (from [0,1]).
+
+Loop runs until i reaches 4:
+
+i starts at 2 -&gt; add term
+then i becomes 3 -&gt; add another
+then i becomes4-&gt; add third
+
+Then len(fibs) would be 5 elements? Because after three appends?
+
+Wait initial len=2. Then loop runs for i from 2 to n-1 (since the condition is i &lt;n).
+
+So for n=5:
+
+i runs: 2,3,4.
+
+Each iteration adds one element.
+
+So starting at len=2, adding 3 elements gives a total of 5.
+
+Yes.
+
+Thus code seems correct.
+
+Wait but in the loop variable &#39;i&#39; starts as len(fibs), which is 2 for n&gt;=2.
+
+Then runs while i &lt;n: meaning it will run (n - len) times. Since initially fibs has 2 elements, and each iteration appends one element until total is n.
+
+So this should work correctly.
+
+Thus the code should handle all cases.
+
+
+To solve this problem, we need to generate a Fibonacci sequence based on the number of terms specified by the user. The Fibonacci sequence starts with two initial values (0 and 1) and each subsequent term is the sum of the previous two terms.
+
+### Approach
+1. **Reading Input**: We read an integer input from the user which specifies the number of terms in the Fibonacci sequence.
+2. **Input Validation**: If the input is not a positive integer, we print an error message and exit.
+3. **Initialization**: Depending on the value of the input, we initialize our Fibonacci sequence with appropriate starting values:
+   - If the input is 1, the sequence starts with [0].
+   - If the input is greater than or equal to 2, it starts with [0, 1].
+4. **Generating Sequence**: Using a loop, we generate each subsequent term by summing the previous two terms until we reach the desired number of terms.
+5. **Output**: Finally, we print the generated Fibonacci sequence.
+
+### Solution Code
+```go
+package main
+
+import (
+        &#34;bufio&#34;
+        &#34;fmt&#34;
+        &#34;os&#34;
+        &#34;strconv&#34;
+)
+
+func main() {
+        var input strings.NewReader()
+        fmt.Print(&#34;Enter the number of terms: &#34;)
+        input.ReadString()
+
+        n, err := strconv.Atoi(input)
+        if n &lt;= 0 || err != nil {
+                fmt.Println(&#34;Please enter a positive integer.&#34;)
+                os.Exit(1)
+        }
+
+        fibs := make([]int, 0)
+
+        if n &gt;= 1 {
+                fibs = append(fibs, 0)
+        }
+        if n &gt;= 2 {
+                fibs = append(fibs, 1)
+        }
+
+        for i := len(fibs); i &lt; n; i++ {
+                nextVal := fibs[i-1] + fibs[i-2]
+                fibs = append(fibs, nextVal)
+        }
+
+        fmt.Println(&#34;Fibonacci sequence:&#34;, fibs)
+}
+```
+
+### Explanation
+1. **Reading Input**: The program starts by reading the user&#39;s input using `input.ReadString()`.
+2. **Validation Check**: It converts the input string to an integer and checks if it is a positive integer.
+3. **Initialization of Fibonacci Sequence**:
+   - If the input (n) is 1, the sequence starts with [0].
+   - For n ≥ 2, the sequence starts with [0, 1].
+4. **Generating Terms**: Using a loop, each term from index 2 to n-1 is generated by summing the two preceding terms.
+5. **Output**: The resulting Fibonacci sequence is printed.
+
+This approach efficiently handles all valid inputs and generates the correct sequence of numbers using simple arithmetic operations within a loop.
+</pre>
+<p>The <code>deepseek-r1:7b</code> thought a lot and gave a reasonable answer. Let&#39;s see the NeuralChat&#39;s performance.</p>
+<pre>total duration:       18.094297389s
+load duration:        9.551611ms
+prompt eval count:    27 token(s)
+prompt eval duration: 1.801s
+prompt eval rate:     14.99 tokens/s
+eval count:           124 token(s)
+eval duration:        16.282s
+eval rate:            7.62 tokens/s
+</pre>
+<p>Here is the full answer from the NeuralChat.</p>
+<pre>// Fibonacci sequence calculation using recursion in Go programming language.
+package main
+
+import &#34;fmt&#34;
+
+// Function to calculate Fibonacci sequence using recursion.
+func fib(n int) int {
+        if n &lt;= 1 {
+                return n
+        }
+        return fib(n-1) + fib(n-2)
+}
+
+func main() {
+        for i := 0; i &lt; 15; i++ {
+                fmt.Println(fib(i))
+        }
+}
+</pre>
+<p>NeuralChat with 7 billion parameters is slightly faster than DeepSeek-R1 with 7 billion parameters too. NeuralChat&#39;s answer is straight to the point. DeepSeek&#39;s answer is reasonable. Both of them use 50% of CPU resources. Did I miss something or is this because the Ollama didn&#39;t optimize enough Intel&#39;s GPU or NPU? I set <code>OLLAMA_INTEL_GPU=true</code> as my environment variable but I think it has no effect.</p>
+<h2>Applying it to the Copilot key</h2>
+<p>We need the Chromium browser, the open-source version of Google Chrome, <code>sudo apt install chromium-browser</code>.</p>
+<ol>
+  <li>Settings &gt; Keyboard &gt; Keyboard Shortcuts &gt; View and Customize Shortcuts &gt; Custom Shortcuts &gt; Add Shortcut</li>
+  <li>Name: Open WebUI. Command: <code>chromium-browser --app=http://localhost:48080</code>. Shortcut: <strong>Fn</strong> + <strong>Copilot</strong>.</li>
+</ol>
+<p>Now, let&#39;s hold the Fn key then press the Copilot key. The Chromium browser with Open WebUI is shown up.</p>
+<p>I know it&#39;s not clean because we need to hold the Fn key. To remap only the Copilot button requires a little effort. Maybe I&#39;ll update this article later if I find a more elegant way.</p>
+	<h2>Related Articles</h2>
+	<ul>
+		<li><a href="/thinkpad-t14-with-linux/">ThinkPad T14 with Linux</a></li>
+		<li><a href="/top-6-best-laptops-for-programmers/">Top 6 Best Laptops for Programmers</a></li>
+		<li><a href="/top-5-best-laptops-for-programming-students/">Top 5 Best Laptops for Programming Students</a></li>
+		<li><a href="/first-experience-of-manus-ai/">First Experience of Manus AI</a></li>
+	</ul>
+
+	<ul id="article-share" class="plain row">
+		<li class="facebook">
+			<a data-title="Remap the Copilot Key in Linux" href="https://www.facebook.com/sharer/sharer.php?u=%2fremap-the-copilot-key-in-linux" rel="noopener noreferrer" target="_blank">
+				<span>Share</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg>
+			</a>
+		</li>
+		<li class="twitter">
+			<a data-title="Remap the Copilot Key in Linux" href="https://twitter.com/intent/tweet?text=Remap%20the%20Copilot%20Key%20in%20Linux&amp;url=%2fremap-the-copilot-key-in-linux" rel="noopener noreferrer" target="_blank">
+				<span>Tweet</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+			</a>
+		</li>
+	</ul>
+	
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</section>
+	</main>
+	<footer class="row">
+		<p id="credit">© <span id="credit-year"></span> <a href="/">Aristo Rinjuang</a> · Made with <a href="https://lesstruct.dev" rel="noopener noreferrer" target="_blank">Lesstruct</a> <span aria-hidden="true">❤️</span></p>
+		
+	</footer>
+	
+	
+	
+
+</body></html>

@@ -1,0 +1,12 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "Static site pre-built by lesstruct-cli — nothing to compile."
+  artifacts:
+    baseDirectory: /_build
+    files:
+      - '**/*'
+  cache:
+    paths: []

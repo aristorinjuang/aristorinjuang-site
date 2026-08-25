@@ -1,0 +1,1318 @@
+<!DOCTYPE html><html lang="en" amp=""><head>
+  <link rel="canonical" href="https://aristorinjuang.com/solid/"><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"/><meta name="description" content="Implementation of SOLID principles in Go, TypeScript, and PHP."/><meta property="og:title" content="SOLID"/><meta property="og:description" content="Implementation of SOLID principles in Go, TypeScript, and PHP."/><meta property="og:image" content="https://images.unsplash.com/photo-1597794254624-4283a6a5a0b9?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"/><meta property="og:type" content="website"/><meta property="og:site_name" content="Aristo Rinjuang"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://images.unsplash.com/photo-1597794254624-4283a6a5a0b9?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"/><meta property="article:author" content="Aristo Rinjuang"/><meta name="author" content="Aristo Rinjuang"/><meta name="robots" content="index, follow"/><meta name="msapplication-config" content="/static/images/icons/browserconfig.xml"/><meta name="theme-color" content="#ffffff"/><style amp-custom="">@import 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap';:root{--color-bg:#ffffff;--color-text:#1a1a2e;--color-text-muted:#6b7280;--color-primary:#22d3ee;--color-primary-hover:#06b6d4;--color-secondary:#2563eb;--color-accent:#8b5cf6;--color-border:#e5e7eb;--color-card-bg:#f9fafb;--color-danger:#dc2626;--color-success:#16a34a;--max-width:1200px;--content-width:768px;--header-height:80px;--radius-sm:4px;--radius-md:6px;--radius-lg:8px;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 16px rgba(0,0,0,0.10);--shadow-lg:0 8px 24px rgba(0,0,0,0.12);--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.5rem;--space-6:2rem;--space-8:3rem;--transition-fast:0.2s ease;--ring:0 0 0 3px color-mix(in srgb,var(--color-primary) 22%,transparent);--font-sans:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--font-mono:"JetBrains Mono","Fira Code","Cascadia Code",monospace}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-sans);line-height:1.6;color:var(--color-text);background-color:var(--color-bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}a{color:var(--color-primary);text-decoration:none}a:hover{color:var(--color-primary-hover);text-decoration:underline}::selection{background:color-mix(in srgb,var(--color-primary) 25%,transparent);color:var(--color-text)}:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}.content-body{font-size:1.0625rem;line-height:1.8}.content-body h1,.content-body h2,.content-body h3,.content-body h4,.content-body h5,.content-body h6{margin-top:1.5em;margin-bottom:.5em;line-height:1.3;scroll-margin-top:calc(var(--header-height) + 1rem)}.content-body h1{font-size:1.75rem}.content-body h2{font-size:1.5rem}.content-body h3{font-size:1.25rem}.content-body h4{font-size:1.125rem}.content-body h5{font-size:1rem}.content-body h6{font-size:.875rem;color:var(--color-text-muted)}.content-body p{margin-bottom:1.25em}.content-body ul,.content-body ol{margin-bottom:1.25em;padding-left:1.5em}.content-body li{margin-bottom:.25em}.content-body blockquote{margin:1.25em auto;padding:.25em 1em;color:var(--color-text-muted);font-style:italic;background:var(--color-card-bg);border-left:3px solid var(--color-primary);border-radius:0 var(--radius-md)var(--radius-md)0}.content-body pre{margin:1.25em auto;overflow-x:auto;border-radius:var(--radius-lg)}.content-body code{font-family:var(--font-mono);font-size:.9em}.content-body:not(pre)>code{padding:.15em .4em;background:var(--color-card-bg);border:1px solid var(--color-border);border-radius:var(--radius-sm)}.content-body figure{margin:1.25em 0;text-align:center}.content-body figure img{display:block;max-width:100%;height:auto;margin:0 auto}.content-body .table-wrapper{max-width:100%;margin:1.25em 0;overflow-x:auto}.content-body table{width:100%;border-collapse:collapse;margin:0}.content-body th,.content-body td{padding:var(--space-2)var(--space-3);text-align:left;border:1px solid var(--color-border)}.content-body th{font-weight:600;background:var(--color-card-bg)}.content-body tbody tr:nth-child(even){background:color-mix(in srgb,var(--color-card-bg) 50%,var(--color-bg))}.content-body hr{border:none;border-top:1px solid var(--color-border);margin:2em auto}.content-body .embed-wrapper{position:relative;height:0;padding-bottom:56.25%;margin:1.25em 0;overflow:hidden}.content-body .embed-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}.content-body .math-block{text-align:center;margin:1.25em 0;overflow-x:auto}html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-height) + .5rem)}body{min-height:100vh;display:flex;flex-direction:column}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}.container{max-width:var(--max-width);margin:0 auto;padding:0 var(--space-5);width:100%}main{flex:1}.btn{display:inline-block;padding:var(--space-3)var(--space-5);font-family:inherit;font-size:1rem;font-weight:600;line-height:1.5;color:var(--color-text);background:var(--color-primary);border:none;border-radius:var(--radius-md);cursor:pointer;transition:background var(--transition-fast),transform var(--transition-fast)}.btn:hover{background:var(--color-primary-hover);text-decoration:none}.btn:active{transform:translateY(1px)}.form-control{display:block;width:100%;padding:var(--space-3);margin-bottom:var(--space-4);font-family:inherit;font-size:1rem;line-height:1.5;color:var(--color-text);background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);transition:border-color var(--transition-fast),box-shadow var(--transition-fast)}textarea.form-control{resize:vertical}.form-control:focus,.form-control:focus-visible{outline:none;border-color:var(--color-primary);box-shadow:var(--ring)}.alert{margin-bottom:var(--space-4);padding:var(--space-3);font-size:.875rem;border-radius:var(--radius-md)}.alert--error{color:var(--color-danger);background:color-mix(in srgb,var(--color-danger) 8%,var(--color-bg));border-left:3px solid var(--color-danger)}.alert--success{color:var(--color-success);background:color-mix(in srgb,var(--color-success) 8%,var(--color-bg))}.site-header{border-bottom:2px solid var(--color-primary);background:linear-gradient( to right,var(--color-bg),color-mix(in srgb,var(--color-secondary) 3%,var(--color-bg)) );margin-bottom:var(--space-5);padding:var(--space-4)0;position:sticky;top:0;z-index:10}.site-header .container{display:flex;justify-content:space-between;align-items:center}.site-logo{font-size:clamp(1.15rem,1rem + .5vw,1.35rem);font-weight:700;color:var(--color-secondary);letter-spacing:-.02em;flex-shrink:0}.site-logo:hover{text-decoration:none;color:var(--color-primary)}.nav-wrapper{position:relative;display:flex;align-items:center;gap:var(--space-2);flex:1;min-width:0;margin-left:var(--space-4)}.nav-wrapper::before,.nav-wrapper::after{content:'';position:relative;flex-shrink:0;width:20px;pointer-events:none;z-index:1}.nav-wrapper::after{background:linear-gradient(to right,transparent,var(--color-bg))}.nav-wrapper::before{background:linear-gradient(to left,transparent,var(--color-bg))}.site-nav{display:flex;gap:var(--space-5);margin-left:var(--space-4);overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}.site-nav::-webkit-scrollbar{display:none}.site-nav a{color:var(--color-text-muted);font-size:.9rem;white-space:nowrap;flex-shrink:0;transition:color var(--transition-fast)}.site-nav a:hover{color:var(--color-primary);text-decoration:none}.site-nav a.active{color:var(--color-secondary);font-weight:600}.nav-toggle{display:none;flex-shrink:0;width:36px;height:36px;padding:0;border:none;background:0 0;cursor:pointer;position:relative;z-index:11}.nav-toggle span{display:block;width:22px;height:2px;background:var(--color-text);border-radius:var(--radius-sm);transition:transform var(--transition-fast),opacity var(--transition-fast);position:absolute;left:7px}.nav-toggle span:nth-child(1){top:9px}.nav-toggle span:nth-child(2){top:17px}.nav-toggle span:nth-child(3){top:17px}.nav-toggle span:nth-child(4){top:25px}.nav-toggle[aria-expanded=true] span:nth-child(1),.nav-toggle[aria-expanded=true] span:nth-child(4){opacity:0}.nav-toggle[aria-expanded=true] span:nth-child(2){transform:rotate(45deg)}.nav-toggle[aria-expanded=true] span:nth-child(3){transform:rotate(-45deg)}.site-search{position:relative;display:flex;align-items:center}.search-toggle{display:none;flex-shrink:0;width:44px;height:44px;padding:0;border:none;background:0 0;cursor:pointer;color:var(--color-text-muted);border-radius:var(--radius-md);transition:color var(--transition-fast)}.search-toggle:hover{color:var(--color-primary)}.search-box{position:relative;display:flex;align-items:center}.search-input{width:200px;padding:var(--space-2).7rem;border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:.875rem;font-family:inherit;color:var(--color-text);background:var(--color-bg);min-width:0;transition:border-color var(--transition-fast),box-shadow var(--transition-fast)}.search-input::placeholder{color:var(--color-text-muted)}.search-input:focus,.search-input:focus-visible{outline:none;border-color:var(--color-primary);box-shadow:var(--ring)}.search-box--open .search-input{width:240px}.search-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;min-width:280px;max-width:360px;max-height:320px;overflow-y:auto;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);z-index:20}.search-dropdown__item{display:block;padding:var(--space-3).8rem;color:var(--color-text);text-decoration:none;border-bottom:1px solid var(--color-border);transition:background .15s ease}.search-dropdown__item:last-child{border-bottom:none}.search-dropdown__item:hover{background:var(--color-card-bg);text-decoration:none}.search-dropdown__title{font-size:.875rem;font-weight:600;line-height:1.3;margin-bottom:.15rem}.search-dropdown__desc{font-size:.8rem;color:var(--color-text-muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.search-dropdown__empty{padding:var(--space-3).8rem;color:var(--color-text-muted);font-size:.875rem}.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:var(--space-5)}.post-card{background:var(--color-card-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;transition:transform var(--transition-fast),box-shadow var(--transition-fast),border-color var(--transition-fast)}.post-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-md)}@media(prefers-reduced-motion:no-preference){.post-card:hover{transform:translateY(-2px)}}.post-card a{display:block;padding:var(--space-5);color:var(--color-text)}.post-card a:hover{text-decoration:none}.post-card h2{font-size:1.25rem;line-height:1.3;margin-bottom:var(--space-2)}.post-card p{font-size:.9rem;color:var(--color-text-muted);margin-bottom:var(--space-2)}.post-card time{font-size:.8rem;color:var(--color-text-muted)}.post-card .author{margin-left:var(--space-2);font-size:.8rem;color:var(--color-text-muted)}.post-card__image{width:calc(100% + 3rem);margin:calc(-1 * var(--space-5))calc(-1 * var(--space-5))var(--space-2);aspect-ratio:16/10;object-fit:cover}.home-section{margin-top:var(--space-8)}.home-section__header{margin-bottom:var(--space-4)}.home-section__header h2{font-size:1.5rem}.home-section__desc{margin-top:var(--space-1);font-size:.9rem;color:var(--color-text-muted)}.pagination{display:flex;justify-content:center;gap:var(--space-4);margin-top:var(--space-8);padding-top:var(--space-6);border-top:1px solid var(--color-border)}.pagination a{padding:var(--space-2)var(--space-4);border:1px solid var(--color-border);border-radius:var(--radius-md);color:var(--color-primary);text-decoration:none;transition:background var(--transition-fast),border-color var(--transition-fast)}.pagination a:hover{background:var(--color-card-bg);border-color:var(--color-primary)}.content-wrapper{max-width:var(--content-width);margin-left:auto;margin-right:auto}.content-article h1{font-size:clamp(1.5rem,1.2rem + 1.5vw,2.25rem);font-weight:700;line-height:1.2;margin-bottom:var(--space-3)}.content-languages,.content-meta{display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-4);color:var(--color-text-muted);font-size:.9rem}.content-tags{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-5)}.tag{padding:.2rem .6rem;font-size:.8rem;color:var(--color-text-muted);background:color-mix(in srgb,var(--color-accent) 8%,var(--color-bg));border:1px solid color-mix(in srgb,var(--color-accent) 25%,var(--color-border));border-radius:var(--radius-sm);transition:background var(--transition-fast),color var(--transition-fast)}.tag:hover{text-decoration:none;color:var(--color-accent);background:color-mix(in srgb,var(--color-accent) 16%,var(--color-bg))}.lang-link{padding:.2rem .6rem;font-size:.8rem;color:var(--color-text-muted);background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-sm);transition:background var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast)}.lang-link:hover{text-decoration:none;color:var(--color-secondary);background:var(--color-card-bg);border-color:color-mix(in srgb,var(--color-secondary) 25%,var(--color-border))}.lang-link--active,.lang-link--active:hover{color:var(--color-bg);background:var(--color-secondary);border-color:var(--color-secondary);font-weight:600}.custom-fields{margin-top:var(--space-6);padding-top:var(--space-5);border-top:2px solid color-mix(in srgb,var(--color-secondary) 15%,var(--color-border))}.custom-fields-list{display:grid;gap:0;background:var(--color-card-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}.custom-fields-list dt{font-weight:600;color:var(--color-text)}.custom-fields-list dd{color:var(--color-text-muted);border-bottom:1px solid var(--color-border)}.custom-fields-list dd:last-of-type{border-bottom:none}.custom-fields-list dt,.custom-fields-list dd{padding:var(--space-3)var(--space-4)}.comments-section{margin-top:var(--space-6);padding-top:var(--space-6);border-top:2px solid color-mix(in srgb,var(--color-secondary) 15%,var(--color-border))}.comments-section h2{margin-bottom:var(--space-4)}.related-posts{margin-top:var(--space-6);padding-top:var(--space-6);border-top:2px solid color-mix(in srgb,var(--color-secondary) 15%,var(--color-border))}.related-posts h2{margin-bottom:var(--space-4)}.comment-item{padding:var(--space-4)0;border-bottom:1px solid var(--color-border)}.comment-item:last-child{border-bottom:none}.comment-header{margin-bottom:var(--space-2)}.comment-author{font-weight:600;color:var(--color-secondary)}.comment-date{margin-left:var(--space-2);font-size:.875rem;color:var(--color-text-muted)}.comment-text{line-height:1.6}.comment-empty{margin-bottom:1.25em;font-style:italic;color:var(--color-text-muted)}.comment-login{margin:var(--space-4)0}.comment-login a{color:var(--color-primary)}.comment-form .btn{margin-bottom:var(--space-4)}.auth-page{max-width:480px;margin:var(--space-6)auto;padding:0 var(--space-4)}.auth-page h1{margin-bottom:var(--space-5);color:var(--color-secondary)}.auth-form label{display:block;margin-bottom:var(--space-1);font-weight:600;color:var(--color-text)}.auth-form .btn{width:100%}.auth-links{margin-top:var(--space-4);text-align:center}.auth-links a{color:var(--color-primary)}.auth-success{text-align:center}.author-page h1,.tag-page h1{margin-bottom:var(--space-5)}.author-avatar{width:32px;height:32px;margin-right:var(--space-1);border-radius:50%;object-fit:cover;vertical-align:middle}.author-page-avatar{width:96px;height:96px;margin-bottom:var(--space-4);border-radius:50%;object-fit:cover}.back-link{display:inline-block;font-size:.9rem;color:var(--color-primary);transition:color var(--transition-fast)}.back-link:hover{color:var(--color-primary-hover)}.not-found{padding:var(--space-8)0;text-align:center}.not-found h1{font-size:clamp(3rem,2rem + 5vw,4rem);line-height:1.1;color:var(--color-secondary)}.not-found p{margin:var(--space-4)0 var(--space-6);font-size:1.25rem;color:var(--color-text-muted)}.empty{padding:var(--space-6)0;font-size:1.1rem;color:var(--color-text-muted)}.site-footer{margin-top:var(--space-5);padding:var(--space-6)0;text-align:center;color:var(--color-text-muted);font-size:.85rem;background:var(--color-card-bg);border-top:2px solid color-mix(in srgb,var(--color-secondary) 15%,var(--color-border))}@media(max-width:768px){.content-wrapper{margin-left:var(--space-5);margin-right:var(--space-5)}}@media(min-width:768px){.custom-fields-list{grid-template-columns:auto 1fr}.custom-fields-list dt{border-bottom:1px solid var(--color-border)}.custom-fields-list dt:last-of-type{border-bottom:none}.custom-fields-list dd{border-left:1px solid var(--color-border)}}@media(max-width:640px){.site-header .container{flex-wrap:nowrap}.nav-wrapper{position:static;flex:none;margin-left:auto}.nav-wrapper::before,.nav-wrapper::after{display:none}.nav-toggle{display:block}.search-toggle{display:flex;align-items:center;justify-content:center}.search-box{display:none;position:absolute;top:100%;right:0;min-width:44px;min-height:44px}.search-box--open{display:block}.search-input{width:calc(100vw - 3rem);min-width:44px;min-height:44px;font-size:1rem}.search-dropdown{min-width:calc(100vw - 3rem);max-width:calc(100vw - 3rem)}.site-nav{display:none;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;max-height:60vh;padding:var(--space-1)0;overflow-y:auto;background:var(--color-bg);border-top:1px solid var(--color-border);box-shadow:var(--shadow-lg);z-index:10}.site-nav.nav-open{display:flex}.site-nav a{padding:var(--space-3)var(--space-5);font-size:.95rem}.site-nav a:not(:last-child){border-bottom:1px solid var(--color-border)}.posts-grid{grid-template-columns:1fr}}.highlight{margin:var(--space-5)0}.highlight .chroma{background:#0d1117;color:#e6edf3;overflow-x:auto;border-radius:var(--radius-md)}.highlight pre.chroma{margin:0;padding:var(--space-4);font-family:ui-monospace,SFMono-Regular,sf mono,Menlo,Consolas,monospace;font-size:.875rem;line-height:1.6}.highlight table.lntable{width:100%;border-spacing:0;border-collapse:collapse}.highlight td.lntd{vertical-align:top;padding:0}.highlight td.lntd:last-child{width:100%}.highlight .lnt,.highlight .ln{color:#6e7681;white-space:pre;user-select:none}.highlight .x{color:#f85149}.highlight .err{color:#f85149}.highlight .k,.highlight .kc,.highlight .kd,.highlight .kn,.highlight .kp,.highlight .kr,.highlight .kt,.highlight .o,.highlight .ow{color:#ff7b72}.highlight .s,.highlight .sa,.highlight .sb,.highlight .sc,.highlight .dl,.highlight .s2,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx,.highlight .sr,.highlight .s1,.highlight .ss{color:#a5d6ff}.highlight .m,.highlight .mb,.highlight .mf,.highlight .mh,.highlight .mi,.highlight .il,.highlight .mo{color:#79c0ff}.highlight .na,.highlight .nb,.highlight .no,.highlight .nf,.highlight .fm,.highlight .bn{color:#79c0ff}.highlight .nc,.highlight .ne,.highlight .nl,.highlight .nt,.highlight .nd,.highlight .ni,.highlight .nn,.highlight .nx,.highlight .py{color:#ffa657}.highlight .c,.highlight .ch,.highlight .cm,.highlight .cp,.highlight .cpf,.highlight .c1,.highlight .cs,.highlight .sd{color:#8b949e}.highlight .gd{color:#ffa198;background-color:#67060c}.highlight .gi{color:#56d364;background-color:#0c5325}.highlight .w{color:#8b949e}</style><style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><script async="" src="https://cdn.ampproject.org/v0.js"></script></head>
+<body>
+	<header>
+		<ul id="social" class="plain row">
+			<li class="email">
+				<a href="mailto:contact@aristorinjuang.com" title="Email">
+					<span class="screen-reader-text">Email</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+				</a>
+			</li>
+			<li class="github">
+				<a href="https://github.com/aristorinjuang" rel="noopener noreferrer" target="_blank" title="GitHub">
+					<span class="screen-reader-text">GitHub</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+				</a>
+			</li>
+			<li class="linkedin">
+				<a href="https://www.linkedin.com/in/aristorinjuang" rel="noopener noreferrer" target="_blank" title="LinkedIn">
+					<span class="screen-reader-text">LinkedIn</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+				</a>
+			</li>
+		</ul>
+	</header>
+	<main>
+<section id="page" class="content">
+	<h1>SOLID</h1>
+	<p id="article-date"><time datetime="2022-07-31T00:00:00Z">July 31, 2022</time></p>
+
+	<figure><amp-img src="https://images.unsplash.com/photo-1597794254624-4283a6a5a0b9?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80" alt="SOLID"></amp-img></figure><p>I created a simple program in Go, TypeScript, and PHP that implements all principles of SOLID.</p>
+<p>To understand all SOLID principles, I suggest you read a book called <a href="https://books.google.co.id/books/about/Clean_Architecture.html?id=uGE1DwAAQBAJ&amp;source=kp_book_description&amp;redir_esc=y" rel="noopener noreferrer" target="_blank">Clean Architecture: A Craftsman&#39;s Guide to Software Structure and Design</a> by <a href="https://en.wikipedia.org/wiki/Robert_C._Martin" rel="noopener noreferrer" target="_blank">Robert Cecil Martin</a>, colloquially called <strong>Uncle Bob</strong>.</p>
+<figure>
+    <amp-img src="/uploads/media/46ba98dc1c318f2f.webp" width="740" height="967" alt="Clean Architecture" layout="responsive"></amp-img>
+</figure>
+<blockquote>
+    <p>The SOLID principles tell us how to arrange our functions and data structures into classes, and how those classes should be interconnected. The use of the word “class” does not imply that these principles are applicable only to object-oriented software. A class is simply a coupled grouping of functions and data. Every software system has such groupings, whether they are called classes or not. The SOLID principles apply to those groupings.</p>
+    <p>The goal of the principles is the creation of mid-level software structures that:</p>
+    <ul>
+        <li>Tolerate change,</li>
+        <li>Are easy to understand, and</li>
+        <li>Are the basis of components that can be used in many software systems.</li>
+    </ul>
+</blockquote>
+<p>I put the quotes from the book here. I don&#39;t want to change any theory. I think those quotes are clear enough.</p>
+<p>What I want to show in this article is implementations. You can find implementations from other articles too. Most of them made an example for every principle. I also do the same, including a program that I made that applies all principles.</p>
+<h2>Shapes</h2>
+<figure>
+    <amp-img src="/uploads/media/2c15f4ff29609c9b.webp" width="740" height="534" alt="Shapes Class Diagram" layout="responsive"></amp-img>
+</figure>
+<p>A simple app of GoLang to calculate the area and perimeter of shapes that implement SOLID. I also made another version in TypeScript and PHP. Feel free to clone the repositories:</p>
+<ul>
+    <li><a href="https://github.com/aristorinjuang/solid-in-go" rel="noopener noreferrer" target="_blank">https://github.com/aristorinjuang/solid-in-go</a></li>
+    <li><a href="https://github.com/aristorinjuang/solid-in-ts" rel="noopener noreferrer" target="_blank">https://github.com/aristorinjuang/solid-in-ts</a></li>
+    <li><a href="https://github.com/aristorinjuang/solid-in-php" rel="noopener noreferrer" target="_blank">https://github.com/aristorinjuang/solid-in-php</a></li>
+</ul>
+<h2>Single Responsibility</h2>
+<p><strong>S</strong> stands for <strong>Single Responsibility</strong>. The first principle of SOLID. One function should have one responsibility. Let&#39;s review the code below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go nohighlight" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">g</span><span class="w"> </span><span class="o">*</span><span class="nx">Guest</span><span class="p">)</span><span class="w"> </span><span class="nf">AddShape</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%T&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;*equilateral.&#34;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">g</span><span class="p">.</span><span class="nx">Repo</span><span class="p">.</span><span class="nf">AddShape</span><span class="p">(</span><span class="nx">g</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<p>It looks simple. But exactly, it has two responsibilities; checking permission and adding shape to the user. We can put it to another function and make it more dynamic.</p>
+<div class="semantic-tabs">
+<h3>Go</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go nohighlight" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">HasPermission</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%T&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">u</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&#34;*user.Guest&#34;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%T&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;*equilateral.&#34;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">g</span><span class="w"> </span><span class="o">*</span><span class="nx">Guest</span><span class="p">)</span><span class="w"> </span><span class="nf">AddShape</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nf">HasPermission</span><span class="p">(</span><span class="nx">g</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">g</span><span class="p">.</span><span class="nx">Repo</span><span class="p">.</span><span class="nf">AddShape</span><span class="p">(</span><span class="nx">g</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>TypeScript</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript nohighlight" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">HasPermission</span> <span class="o">=</span> <span class="p">(</span><span class="nx">u</span>: <span class="kt">User</span><span class="p">,</span> <span class="nx">s</span>: <span class="kt">Shape</span><span class="p">)</span><span class="o">:</span> <span class="kr">boolean</span> <span class="o">=</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="kr">constructor</span><span class="p">.</span><span class="nx">name</span> <span class="o">!=</span> <span class="s1">&#39;Guest&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="kr">constructor</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;Circle&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="s1">&#39;Square&#39;</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">public</span> <span class="nx">addShape</span><span class="p">(</span><span class="nx">s</span>: <span class="kt">Shape</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">HasPermission</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="p">.</span><span class="nx">_repo</span><span class="p">.</span><span class="nx">addShape</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>PHP</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php nohighlight" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="o">?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="o"></span><span class="nf">hasPermission</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">,</span> <span class="nx">Shape</span> <span class="nv">$s</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">in_array</span><span class="p">(</span><span class="s1">&#39;User\User&#39;</span><span class="p">,</span> <span class="nx">class_implements</span><span class="p">(</span><span class="nv">$u</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">in_array</span><span class="p">(</span><span class="s1">&#39;Shape\Equilateral\Equilateral&#39;</span><span class="p">,</span> <span class="nx">class_implements</span><span class="p">(</span><span class="nv">$s</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">addShape</span><span class="p">(</span><span class="nx">Shape</span> <span class="nv">$s</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">Permission</span><span class="o">::</span><span class="na">hasPermission</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$s</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repo</span><span class="o">-&gt;</span><span class="na">addShape</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$s</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+</div>
+<h2>Open-Closed</h2>
+<blockquote>
+    <p>A software artifact should be open for extension but closed for modification.</p>
+</blockquote>
+<p>Take a look at our program, Shapes. All of components such as <code>Shape</code>, <code>User</code>, and <code>Repository</code> are open for extension but closed for modification. Thanks to <code>interface</code>.</p>
+<div class="semantic-tabs">
+<h3>Go</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go nohighlight" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Shape</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">Area</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">Perimeter</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Shape</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">radius</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Circle</span><span class="p">)</span><span class="w"> </span><span class="nf">Area</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nf">Pow</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Circle</span><span class="p">)</span><span class="w"> </span><span class="nf">Perimeter</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">radius</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Square</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Shape</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">side</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Square</span><span class="p">)</span><span class="w"> </span><span class="nf">Area</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nf">Pow</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">side</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Square</span><span class="p">)</span><span class="w"> </span><span class="nf">Perimeter</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">side</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>TypeScript</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript nohighlight" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">area</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">perimeter</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Circle</span> <span class="kr">implements</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_radius</span>: <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">constructor</span><span class="p">(</span><span class="nx">radius</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_radius</span> <span class="o">=</span> <span class="nx">radius</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">area</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_radius</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">perimeter</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">_radius</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Square</span> <span class="kr">implements</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_side</span>: <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">constructor</span><span class="p">(</span><span class="nx">side</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_side</span> <span class="o">=</span> <span class="nx">side</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">area</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_side</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">perimeter</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">_side</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>PHP</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php nohighlight" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="o">?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">interface</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">area</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">perimeter</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Circle</span> <span class="k">implements</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="nx">float</span> <span class="nv">$radius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">function</span> <span class="o"></span><span class="fm">__construct</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$radius</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radius</span> <span class="o">=</span> <span class="nv">$radius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">area</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nx">pow</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radius</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">perimeter</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Square</span> <span class="k">implements</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="nx">float</span> <span class="nv">$side</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">function</span> <span class="o"></span><span class="fm">__construct</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$side</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">side</span> <span class="o">=</span> <span class="nv">$side</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">area</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">pow</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">side</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">perimeter</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">side</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+</div>
+<h2>Liskov Substitution</h2>
+<blockquote>
+    <p>What is wanted here is something like the following substitution property: If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.</p>
+</blockquote>
+<p>That quote is from <a href="https://en.wikipedia.org/wiki/Barbara_Liskov" rel="noopener noreferrer" target="_blank">Barbara Liskov</a> in 1988. You must be confused at the first time. That&#39;s why I made this article to bring an example of the implementation. Let&#39;s refactor our <code>Shape</code> to be more extendable using Liskov principle.</p>
+<div class="semantic-tabs">
+<h3>Go</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go nohighlight" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Shape</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">Area</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">Perimeter</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Equilateral</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Shape</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">SetA</span><span class="p">(</span><span class="kt">float64</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">NonEquilateral</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Equilateral</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">SetB</span><span class="p">(</span><span class="kt">float64</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Equilateral</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">radius</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Circle</span><span class="p">)</span><span class="w"> </span><span class="nf">SetA</span><span class="p">(</span><span class="nx">radius</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">radius</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">radius</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Circle</span><span class="p">)</span><span class="w"> </span><span class="nf">Area</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nf">Pow</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Circle</span><span class="p">)</span><span class="w"> </span><span class="nf">Perimeter</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">radius</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Square</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Equilateral</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">side</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Square</span><span class="p">)</span><span class="w"> </span><span class="nf">SetA</span><span class="p">(</span><span class="nx">side</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">side</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">side</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Square</span><span class="p">)</span><span class="w"> </span><span class="nf">Area</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nf">Pow</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">side</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Square</span><span class="p">)</span><span class="w"> </span><span class="nf">Perimeter</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">side</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Rectangle</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">NonEquilateral</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">length</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Rectangle</span><span class="p">)</span><span class="w"> </span><span class="nf">SetA</span><span class="p">(</span><span class="nx">length</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">length</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Rectangle</span><span class="p">)</span><span class="w"> </span><span class="nf">SetB</span><span class="p">(</span><span class="nx">width</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">width</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Rectangle</span><span class="p">)</span><span class="w"> </span><span class="nf">Area</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Rectangle</span><span class="p">)</span><span class="w"> </span><span class="nf">Perimeter</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>TypeScript</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript nohighlight" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">area</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">perimeter</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">Equilateral</span> <span class="kr">extends</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">set</span> <span class="nx">a</span><span class="p">(</span><span class="nx">a</span>: <span class="kt">number</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">NonEquilateral</span> <span class="kr">extends</span> <span class="nx">Equilateral</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">set</span> <span class="nx">b</span><span class="p">(</span><span class="nx">b</span>: <span class="kt">number</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Circle</span> <span class="kr">implements</span> <span class="nx">Equilateral</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_radius</span>: <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">constructor</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_radius</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">set</span> <span class="nx">a</span><span class="p">(</span><span class="nx">a</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_radius</span> <span class="o">=</span> <span class="nx">a</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">area</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_radius</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">perimeter</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">_radius</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Square</span> <span class="kr">implements</span> <span class="nx">Equilateral</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_side</span>: <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">constructor</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_side</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">set</span> <span class="nx">a</span><span class="p">(</span><span class="nx">a</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_side</span> <span class="o">=</span> <span class="nx">a</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">area</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_side</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">perimeter</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">_side</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Rectangle</span> <span class="kr">implements</span> <span class="nx">NonEquilateral</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_length</span>: <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_width</span>: <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">constructor</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_length</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_width</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">set</span> <span class="nx">a</span><span class="p">(</span><span class="nx">a</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_length</span> <span class="o">=</span> <span class="nx">a</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">set</span> <span class="nx">b</span><span class="p">(</span><span class="nx">b</span>: <span class="kt">number</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_width</span> <span class="o">=</span> <span class="nx">b</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">area</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_length</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">_width</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">perimeter</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_length</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">_width</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>PHP</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php nohighlight" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="o">?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">interface</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">area</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">perimeter</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">interface</span> <span class="nx">Equilateral</span> <span class="k">extends</span> <span class="nx">Shape</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">setA</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$a</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">interface</span> <span class="nx">NonEquilateral</span> <span class="k">extends</span> <span class="nx">Equilateral</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">setB</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$b</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Circle</span> <span class="k">implements</span> <span class="nx">Equilateral</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="nx">float</span> <span class="nv">$radius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">setA</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$a</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radius</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">area</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nx">pow</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radius</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">perimeter</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">pi</span><span class="p">()</span> <span class="o">*</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">radius</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Square</span> <span class="k">implements</span> <span class="nx">Equilateral</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="nx">float</span> <span class="nv">$side</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">setA</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$a</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">side</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">area</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">pow</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">side</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">perimeter</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">side</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Rectangle</span> <span class="k">implements</span> <span class="nx">NonEquilateral</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="nx">float</span> <span class="nv">$length</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="nx">float</span> <span class="nv">$width</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">setA</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$a</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">length</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">setB</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$b</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">width</span> <span class="o">=</span> <span class="nv">$b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">area</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">length</span> <span class="o">*</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">width</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">perimeter</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">length</span> <span class="o">+</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">width</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>As we can see from examples above, <code>setA()</code>, <code>setB()</code>, <code>area()</code>, and <code>perimeter()</code> have their own details or implementation. <code>Circle</code> and <code>Square</code> only need <code>setA()</code>, but <code>a</code> for <code>Circle</code> is <code>radius</code> and for <code>Square</code> is <code>side</code>. <code>NonEquilateral</code> has <code>setB()</code> that <code>Rectangle</code> needs. <code>Circle</code> and <code>Square</code> don&#39;t need <code>setB()</code>. It will <strong>break</strong> the Liskov principle if they are forced to implement <code>setB()</code>.</p>
+<h2>Interface Segregation</h2>
+<blockquote>
+    <p>The lesson here is that depending on something that carries baggage that you don&#39;t need can cause you troubles that you didn&#39;t expect.</p>
+</blockquote>
+<p>Objects only have methods that they need.</p>
+<div class="semantic-tabs">
+<h3>Go</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go nohighlight" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">ID</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">uint32</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">AddShape</span><span class="p">(</span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">ShapeAreas</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">AverageShapeArea</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">PremiumUser</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">User</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">ShapePerimeters</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">AverageShapePerimeter</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>TypeScript</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript nohighlight" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">get</span> <span class="nx">id</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">bigint</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">addShape</span><span class="p">(</span><span class="nx">shape</span>: <span class="kt">Shape</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">get</span> <span class="nx">shapeAreas</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">get</span> <span class="nx">averageShapeArea</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">PremiumUser</span> <span class="kr">extends</span> <span class="nx">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">get</span> <span class="nx">shapePerimeters</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">get</span> <span class="nx">averageShapePerimeter</span><span class="p">(</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>PHP</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php nohighlight" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="o">?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">interface</span> <span class="nx">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">addShape</span><span class="p">(</span><span class="nx">Shape</span> <span class="nv">$shape</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">shapeAreas</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">averageShapeArea</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">interface</span> <span class="nx">PremiumUser</span> <span class="k">extends</span> <span class="nx">User</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">shapePerimeters</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">averageShapePerimeter</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>In our program, Shape, to get information of <code>ShapePerimeters()</code> and <code>AverageShapePerimeter()</code> are only for <code>PremiumUser</code>. If we only have one interface and even <code>ShapePerimeters()</code> and <code>AverageShapePerimeter()</code> return 0, it will break the Interface principle.</p>
+<h2>Dependency Inversion</h2>
+<blockquote>
+    <p>The Dependency Inversion Principle (DIP) tells us that the most flexible systems are those in which source code dependencies refer only to abstractions, not to concretions.</p>
+</blockquote>
+<p>The code below is a common example of the Dependency Inversion Principle.</p>
+<div class="semantic-tabs">
+<h3>Go</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go nohighlight" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Repository</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">AddShape</span><span class="p">(</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">Shapes</span><span class="p">(</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="p">]</span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">ShapeAreas</span><span class="p">(</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nf">ShapePerimeters</span><span class="p">(</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Memory</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">shapes</span><span class="w">          </span><span class="kd">map</span><span class="p">[</span><span class="kt">uint32</span><span class="p">]</span><span class="p">[</span><span class="p">]</span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">shapeAreas</span><span class="w">      </span><span class="kd">map</span><span class="p">[</span><span class="kt">uint32</span><span class="p">]</span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">shapePerimeters</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">uint32</span><span class="p">]</span><span class="kt">float64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">Memory</span><span class="p">)</span><span class="w"> </span><span class="nf">AddShape</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">m</span><span class="p">.</span><span class="nx">shapes</span><span class="p">[</span><span class="nx">u</span><span class="p">.</span><span class="nf">ID</span><span class="p">(</span><span class="p">)</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">shapes</span><span class="p">[</span><span class="nx">u</span><span class="p">.</span><span class="nf">ID</span><span class="p">(</span><span class="p">)</span><span class="p">]</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">m</span><span class="p">.</span><span class="nx">shapeAreas</span><span class="p">[</span><span class="nx">u</span><span class="p">.</span><span class="nf">ID</span><span class="p">(</span><span class="p">)</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nf">Area</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">m</span><span class="p">.</span><span class="nx">shapePerimeters</span><span class="p">[</span><span class="nx">u</span><span class="p">.</span><span class="nf">ID</span><span class="p">(</span><span class="p">)</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nf">Perimeter</span><span class="p">(</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">Memory</span><span class="p">)</span><span class="w"> </span><span class="nf">Shapes</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="p">]</span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">shapes</span><span class="p">[</span><span class="nx">u</span><span class="p">.</span><span class="nf">ID</span><span class="p">(</span><span class="p">)</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">Memory</span><span class="p">)</span><span class="w"> </span><span class="nf">ShapeAreas</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">shapeAreas</span><span class="p">[</span><span class="nx">u</span><span class="p">.</span><span class="nf">ID</span><span class="p">(</span><span class="p">)</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">Memory</span><span class="p">)</span><span class="w"> </span><span class="nf">ShapePerimeters</span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">shapePerimeters</span><span class="p">[</span><span class="nx">u</span><span class="p">.</span><span class="nf">ID</span><span class="p">(</span><span class="p">)</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">NewMemory</span><span class="p">(</span><span class="p">)</span><span class="w"> </span><span class="nx">Repository</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Memory</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nx">shapes</span><span class="p">:</span><span class="w">          </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">uint32</span><span class="p">]</span><span class="p">[</span><span class="p">]</span><span class="nx">shape</span><span class="p">.</span><span class="nx">Shape</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nx">shapeAreas</span><span class="p">:</span><span class="w">      </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">uint32</span><span class="p">]</span><span class="kt">float64</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nx">shapePerimeters</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">uint32</span><span class="p">]</span><span class="kt">float64</span><span class="p">)</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>TypeScript</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-typescript nohighlight" data-lang="typescript"><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">Repository</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">addShape</span><span class="p">(</span><span class="nx">user</span>: <span class="kt">User</span><span class="p">,</span> <span class="nx">shape</span>: <span class="kt">Shape</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">shapes</span><span class="p">(</span><span class="nx">user</span>: <span class="kt">User</span><span class="p">)</span><span class="o">:</span> <span class="nx">Shape</span><span class="p">[</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">shapeAreas</span><span class="p">(</span><span class="nx">user</span>: <span class="kt">User</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">shapePerimeters</span><span class="p">(</span><span class="nx">user</span>: <span class="kt">User</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">Memory</span> <span class="kr">implements</span> <span class="nx">Repository</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_shapes</span>: <span class="kt">Map</span><span class="p">&lt;</span><span class="nt">bigint</span><span class="p">,</span> <span class="na">Shape</span><span class="err">[</span><span class="err">]</span><span class="p"></span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_shapeAreas</span>: <span class="kt">Map</span><span class="p">&lt;</span><span class="nt">bigint</span><span class="p">,</span> <span class="na">number</span><span class="p"></span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">private</span> <span class="nx">_shapePerimeters</span>: <span class="kt">Map</span><span class="p">&lt;</span><span class="nt">bigint</span><span class="p">,</span> <span class="na">number</span><span class="p"></span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">constructor</span><span class="p">(</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_shapes</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">&lt;</span><span class="nt">bigint</span><span class="p">,</span> <span class="na">Shape</span><span class="err">[</span><span class="err">]</span><span class="p"></span><span class="p">&gt;</span><span class="p">(</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_shapeAreas</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">&lt;</span><span class="nt">bigint</span><span class="p">,</span> <span class="na">number</span><span class="p"></span><span class="p">&gt;</span><span class="p">(</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_shapePerimeters</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">&lt;</span><span class="nt">bigint</span><span class="p">,</span> <span class="na">number</span><span class="p"></span><span class="p">&gt;</span><span class="p">(</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">addShape</span><span class="p">(</span><span class="nx">u</span>: <span class="kt">User</span><span class="p">,</span> <span class="nx">s</span>: <span class="kt">Shape</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="p">(</span><span class="p">&lt;</span><span class="nt">Shape</span><span class="err">[</span><span class="err">]</span><span class="p"></span><span class="p">&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapes</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="p">)</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">_shapes</span><span class="p">.</span><span class="kr">set</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">&lt;</span><span class="nt">Shape</span><span class="p"></span><span class="p">&gt;</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="p">&lt;</span><span class="nt">Shape</span><span class="err">[</span><span class="err">]</span><span class="p"></span><span class="p">&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapes</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="p">)</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapeAreas</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">_shapeAreas</span><span class="p">.</span><span class="kr">set</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_shapeAreas</span><span class="p">.</span><span class="kr">set</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nb">Number</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapeAreas</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="p">)</span> <span class="o">+</span> <span class="nx">s</span><span class="p">.</span><span class="nx">area</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapePerimeters</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">this</span><span class="p">.</span><span class="nx">_shapePerimeters</span><span class="p">.</span><span class="kr">set</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="nx">_shapePerimeters</span><span class="p">.</span><span class="kr">set</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nb">Number</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapePerimeters</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="p">)</span> <span class="o">+</span> <span class="nx">s</span><span class="p">.</span><span class="nx">perimeter</span><span class="p">(</span><span class="p">)</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">shapes</span><span class="p">(</span><span class="nx">u</span>: <span class="kt">User</span><span class="p">)</span><span class="o">:</span> <span class="nx">Shape</span><span class="p">[</span><span class="p">]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">Shape</span><span class="err">[</span><span class="err">]</span><span class="p"></span><span class="p">&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapes</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">shapeAreas</span><span class="p">(</span><span class="nx">u</span>: <span class="kt">User</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">Number</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapeAreas</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">public</span> <span class="nx">shapePerimeters</span><span class="p">(</span><span class="nx">u</span>: <span class="kt">User</span><span class="p">)</span><span class="o">:</span> <span class="kt">number</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">Number</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_shapePerimeters</span><span class="p">.</span><span class="kr">get</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+<h3>PHP</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tbody><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php nohighlight" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="o">?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">interface</span> <span class="nx">Repository</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">addShape</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">,</span> <span class="nx">Shape</span> <span class="nv">$s</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">shapes</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">shapeAreas</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">shapePerimeters</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Memory</span> <span class="k">implements</span> <span class="nx">Repository</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="k">array</span> <span class="nv">$shapes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="k">array</span> <span class="nv">$shapeAreas</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span> <span class="k">array</span> <span class="nv">$shapePerimeters</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">addShape</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">,</span> <span class="nx">Shape</span> <span class="nv">$s</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapes</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">][]</span> <span class="o">=</span> <span class="nv">$s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapeAreas</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapeAreas</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapeAreas</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]</span> <span class="o">+=</span> <span class="nv">$s</span><span class="o">-&gt;</span><span class="na">area</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapePerimeters</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapePerimeters</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapePerimeters</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]</span> <span class="o">+=</span> <span class="nv">$s</span><span class="o">-&gt;</span><span class="na">perimeter</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">shapes</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapes</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">shapeAreas</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapeAreas</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">public</span> <span class="k">function</span> <span class="o"></span><span class="nf">shapePerimeters</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$u</span><span class="p">)</span><span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">shapePerimeters</span><span class="p">[</span><span class="nv">$u</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></tbody></table>
+</div>
+</div>
+</div>
+<p>Repository is also an Anti-Corruption Layer (ACL). On our code above, the Repository only has the Memory implementation. No matter how many its implementation at the future, they need to implement all methods from the Repository. Those implementation will be consistent <strong>depend</strong> on the Repository. If we call the implementation directly, it will break the Dependency Inversion Principle.</p>
+<h2>Closing</h2>
+<p>I hope this single article can make you understand about SOLID principles. SOLID is important. It is a <strong>must</strong> even since the developers begin their journeys. It is one of foundations to make good software.</p>
+<p>All tabs of examples in this article are powered by <a href="https://npmjs.com/package/semantic-tabs" rel="noopener noreferrer" target="_blank">SemanticTabs</a>. It is a VanillaJS library written in TypeScript, super lightweight, only 1.09 kB, to make semantic tabs.</p>
+<h2>References</h2>
+<p>I want to thanks to <a href="https://blog.ompluscator.com" rel="noopener noreferrer" target="_blank">Marko Milojevic</a> and <a href="https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design#interface-segregation-principle" rel="noopener noreferrer" target="_blank">DigitalOcean</a> that inspire me to write this article. But I still suggest you to read the write an original paper of <a href="https://en.wikipedia.org/wiki/SOLID" rel="noopener noreferrer" target="_blank">SOLID</a> from Uncle Bob that introduced these software design patterns.</p>
+	<h2>Related Articles</h2>
+	<ul>
+		<li><a href="/design-patterns-with-go-and-typescript/">Design Patterns with Go and TypeScript</a></li>
+		<li><a href="/create-a-private-nodejs-module-with-typescript/">Create a Private NodeJS Module with TypeScript</a></li>
+		<li><a href="/react-context-with-typescript/">React Context with TypeScript</a></li>
+		<li><a href="/convert-any-images-to-jpeg-and-webp-compress-and-resize-on-the-client-side/">Convert Any Images to JPEG and WebP, Compress, and Resize on the Client Side</a></li>
+	</ul>
+
+	<ul id="article-share" class="plain row">
+		<li class="facebook">
+			<a data-title="SOLID" href="https://www.facebook.com/sharer/sharer.php?u=%2fsolid" rel="noopener noreferrer" target="_blank">
+				<span>Share</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg>
+			</a>
+		</li>
+		<li class="twitter">
+			<a data-title="SOLID" href="https://twitter.com/intent/tweet?text=SOLID&amp;url=%2fsolid" rel="noopener noreferrer" target="_blank">
+				<span>Tweet</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+			</a>
+		</li>
+	</ul>
+	
+	<h2>Comments</h2>
+	<div id="disqus_thread"></div>
+	
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</section>
+	</main>
+	<footer class="row">
+		<p id="credit">© <span id="credit-year"></span> <a href="/">Aristo Rinjuang</a> · Made with <a href="https://lesstruct.dev" rel="noopener noreferrer" target="_blank">Lesstruct</a> <span aria-hidden="true">❤️</span></p>
+		
+	</footer>
+	
+	
+	
+
+</body></html>

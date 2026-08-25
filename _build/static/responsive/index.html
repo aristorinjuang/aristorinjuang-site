@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Navigation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<nav>
+    <button onClick="toggle()"><span class="sr-only">Show navigation!</span> &equiv;</button>
+    <ul id="navigation">
+        <li><a href="#">Menu 1</a></li>
+        <li>
+            <a href="#">Menu 2</a>
+            <ul>
+                <li><a href="#">Sub Menu 1</a></li>
+                <li>
+                    <a href="#">Sub Menu 2</a>
+                    <ul>
+                        <li><a href="#">Sub Sub Menu 1</a></li>
+                        <li><a href="#">Sub Sub Menu 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Sub Menu 3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Menu 3</a></li>
+        <li><a href="#">Menu 4</a></li>
+    </ul>
+</nav>
+<script src="app.js"></script>
+</body>
+</html>
