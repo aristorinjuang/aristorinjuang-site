@@ -5,7 +5,14 @@
     <link>https://aristorinjuang.com</link>
     <description>Aristo Rinjuang</description>
     <language>en</language>
-    <lastBuildDate>Tue, 25 Aug 2026 20:12:48 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 15:50:55 +0000</lastBuildDate>
+    <item>
+      <title>How I Migrated a WordPress Site to Lesstruct: A Practical Guide</title>
+      <link>https://aristorinjuang.com/how-i-migrated-a-wordpress-site-to-lesstruct-a-practical-guide/</link>
+      <guid>https://aristorinjuang.com/how-i-migrated-a-wordpress-site-to-lesstruct-a-practical-guide/</guid>
+      <pubDate>Sun, 30 Aug 2026 11:05:30 +0000</pubDate>
+      <description>Learn how I migrated a WordPress site to Lestruct, including the migration process, architecture changes, deployment, and lessons learned along the way.</description>
+    </item>
     <item>
       <title>PlantUML Editor with AI</title>
       <link>https://aristorinjuang.com/plantuml-editor-with-ai/</link>
@@ -138,13 +145,6 @@
       <guid>https://aristorinjuang.com/thinkpad-t14-with-linux/</guid>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
       <description>My experience of ThinkPad T14 Gen 5 with Linux of Ubuntu 24.04 LTS. Honest review. Performance / Benchmark.</description>
-    </item>
-    <item>
-      <title>Top 6 Best Laptops for Programmers</title>
-      <link>https://aristorinjuang.com/top-6-best-laptops-for-programmers/</link>
-      <guid>https://aristorinjuang.com/top-6-best-laptops-for-programmers/</guid>
-      <pubDate>Fri, 07 Feb 2025 00:00:00 +0000</pubDate>
-      <description>Top 6 best laptops for coding or programming for programmers. Best MacBook and business or Linux laptops for programmers. Apple, Acer, ASUS, Dell, HP, Lenovo.</description>
     </item>
   </channel>
 </rss>
