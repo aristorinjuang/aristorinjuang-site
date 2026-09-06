@@ -5,7 +5,14 @@
     <link>https://aristorinjuang.com</link>
     <description>Aristo Rinjuang</description>
     <language>en</language>
-    <lastBuildDate>Sun, 30 Aug 2026 16:00:55 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 06 Sep 2026 15:05:32 +0000</lastBuildDate>
+    <item>
+      <title>How I Migrated a Hugo Site to Lesstruct: A Practical Guide</title>
+      <link>https://aristorinjuang.com/how-i-migrated-a-hugo-site-to-lesstruct-a-practical-guide/</link>
+      <guid>https://aristorinjuang.com/how-i-migrated-a-hugo-site-to-lesstruct-a-practical-guide/</guid>
+      <pubDate>Sun, 06 Sep 2026 14:17:51 +0000</pubDate>
+      <description>In my previous guide, WordPress to Lesstruct, many readers gave me the same feedback: it wasn’t technical enough. No source code, no real implementation deta...</description>
+    </item>
     <item>
       <title>How I Migrated a WordPress Site to Lesstruct: A Practical Guide</title>
       <link>https://aristorinjuang.com/how-i-migrated-a-wordpress-site-to-lesstruct-a-practical-guide/</link>
@@ -138,13 +145,6 @@
       <guid>https://aristorinjuang.com/remap-the-copilot-key-in-linux/</guid>
       <pubDate>Sat, 15 Mar 2025 00:00:00 +0000</pubDate>
       <description>Remap the Microsoft Copilot key in Linux with Ollama, DeepSeek-R1, and NeuralChat.</description>
-    </item>
-    <item>
-      <title>ThinkPad T14 with Linux</title>
-      <link>https://aristorinjuang.com/thinkpad-t14-with-linux/</link>
-      <guid>https://aristorinjuang.com/thinkpad-t14-with-linux/</guid>
-      <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
-      <description>My experience of ThinkPad T14 Gen 5 with Linux of Ubuntu 24.04 LTS. Honest review. Performance / Benchmark.</description>
     </item>
   </channel>
 </rss>
